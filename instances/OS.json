@@ -1,0 +1,16 @@
+{
+    "householdDescriptors":[
+        {
+            "userSpecifications":[
+                {
+                    "numberOfUsers":5,
+                    "userType":"Older Students",
+                    "minAvaliableTime":"08:00",
+                    "maxAvaliableTime":"21:00",
+                    "minAvaliableTimeEnd": "08:00",
+                    "maxAvaliableTimeEnd": "21:00"
+                }
+            ]
+        }
+    ]
+}
