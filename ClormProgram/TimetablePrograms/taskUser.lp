@@ -12,9 +12,10 @@
 
 time(1..4).
 
-1 { assignment(C, U, T) : user(U),time(T) } 1 :- chore(C).
-:- assignment(C1, U, T), assignment(C2, U, T), C1 != C2.
+1 { assignment(C,U,T) : user(U),time(T)} 1 :- task(C).
+:- assignment(C1, U,T), assignment(C2,U,T), C1 != C2.
 
-assignedUser(U) :- assignment(_,U,_).
+avaliableUser(U) :- assignment(_,U,_).
 
+#minimize { 1@2,U : avaliableUser(U) }.
 #minimize { T@1,U : assignment(_,U,T) }.

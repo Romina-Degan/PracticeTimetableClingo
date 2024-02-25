@@ -18,51 +18,62 @@ class DateValue(Predicate):
     date:ConstantStr
 class User(Predicate):
     name:ConstantStr
-    minAvailableTime:int
-    maxAvailableTime:int
+    # minTime:int
+    # maxTime:int
 
 class Task(Predicate):
     name:ConstantStr
-    duration:int
+    # duration:int
 
 class Assignment(Predicate):
-    date:DateValue
-    user:User
+    task:ConstantStr
+    user:ConstantStr
     time:int 
 
 
 
 def main():
-    timeValues=[600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000]
-    instances=FactBase()
+   
     # durations=[task['duration'] for task in taskDetails['TaskDescriptions']]
     # taskNames=[task['name'] for task in taskDetails['TaskDescriptions']]
 
     ctrl=Control(unifier=[User,Task,Assignment])
     ctrl.load(ASP_PROGRAM)
 
-    for userValues in userDetails['userSpecifications']:
-        predicateUser=User(name=userValues['name'],minAvailableTime=userValues['availableMin'], maxAvailableTime=userValues['avaliableMax'])
-        instances.add(predicateUser)
-        assert predicateUser in instances
+
+    #So it does actually add to the factbase but it isnt in a way that is understandable for the parser
+    #Users work when there is only one value within it?
+    users=[User(name=userValues['name']) for userValues in userDetails['userSpecifications']]
+    tasks=[Task(name=taskValues['taskName'])for taskValues in taskDetails['TaskDescriptions']]
+
     
-    for taskValues in taskDetails['TaskDescriptions']:
-        predicateTask=[Task(name=taskValues['name'], duration=taskValues['duration'])]
-        instances.add(predicateTask)
+    instances=FactBase(users+tasks)
+  
        
 
     ctrl.add_facts(instances)
     ctrl.ground([("base", [])])
+   
+
     solution=None
     
     def on_model(model):
         nonlocal solution
-        solution=model.facts(atoms=True)
+        solution=model.facts(unifier=[User,Task,Assignment], atoms=True,raise_on_empty=True)
     
     ctrl.solve(on_model=on_model)
     if not solution:
         raise ValueError("YOU IDIOT >:(")
-    query=solution.query(Assignment).where(Assignment.user==ph1_).order_by(Assignment.time)
+
+    query = solution.query(Assignment).where(Assignment.user == ph1_).order_by(Assignment.time)
+    for u in users:
+        assignments = list(query.bind(u.name).all())
+        if not assignments:
+            print("THIS IS NOT WORKING..YIPEE".format(u.name))
+        else:
+            print("User {} assigned to: ".format(u.name))
+            for a in assignments:
+                print("\t chore {}".format(a.task))
     
     
 

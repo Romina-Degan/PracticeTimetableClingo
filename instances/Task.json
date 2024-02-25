@@ -1,9 +1,9 @@
 {
 
     "TaskDescriptions":[
-        {"taskID":1, "name":"Hoover Place", "duration":60, "repetition":2, "timesRepeated":3},
-        {"taskID":2, "name":"Do Laundry", "duration":30,"repetition":2, "timesRepeated":1},
-        {"taskID":3, "name":"Clean Dishes", "duration":90, "repetition":7, "timesRepeated":8},
-        {"taskID":4, "name":"Take Trash Out", "duration":10, "repetition":2, "timesRepeated":1}
+        {"taskID":1, "taskName":"Hoover Place", "duration":60, "repetition":2, "timesRepeated":3},
+        {"taskID":2, "taskName":"Do Laundry", "duration":30,"repetition":2, "timesRepeated":1},
+        {"taskID":3, "taskName":"Clean Dishes", "duration":90, "repetition":7, "timesRepeated":8},
+        {"taskID":4, "taskName":"Take Trash Out", "duration":10, "repetition":2, "timesRepeated":1}
     ]
 }
