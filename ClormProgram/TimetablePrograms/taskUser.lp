@@ -1,3 +1,22 @@
+durationVals(1..12).
+time(1..32).
+taskValues(1..4).
+
+
+
+
+
+task(N,D):-taskValues(N), durationVals(D).
+1 { assignment(N,U,T) : user(U),time(T)} 1 :- task(N,D).
+%Need to represent the idea of the total time of the tasks assigned to the user does not exceed a certain amount
+
+
+:- assignment(C1, U,T), assignment(C2,U,T), C1 != C2.
+
+
+
+%NUMBER
+
 % Defines a task and its relevant taskID in the 
 % JSON file, also acts as a way of retriving only the
 %taskID of a certain task
@@ -9,13 +28,3 @@
 % avaliableUser(U) :- assignment(_,U,_,_).
 % #minimize{1@2,U :avaliableUser(U)}.
 % #minimize{T@1,U: assignment(D,U,C,T)}.
-
-time(1..4).
-
-1 { assignment(C,U,T) : user(U),time(T)} 1 :- task(C).
-:- assignment(C1, U,T), assignment(C2,U,T), C1 != C2.
-
-avaliableUser(U) :- assignment(_,U,_).
-
-#minimize { 1@2,U : avaliableUser(U) }.
-#minimize { T@1,U : assignment(_,U,T) }.

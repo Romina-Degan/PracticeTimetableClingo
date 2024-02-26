@@ -18,12 +18,12 @@ class DateValue(Predicate):
     date:ConstantStr
 class User(Predicate):
     name:ConstantStr
-    # minTime:int
+    # ?minTime:int
     # maxTime:int
 
 class Task(Predicate):
     name:ConstantStr
-    # duration:int
+    duration:int
 
 class Assignment(Predicate):
     task:ConstantStr
@@ -44,7 +44,7 @@ def main():
     #So it does actually add to the factbase but it isnt in a way that is understandable for the parser
     #Users work when there is only one value within it?
     users=[User(name=userValues['name']) for userValues in userDetails['userSpecifications']]
-    tasks=[Task(name=taskValues['taskName'])for taskValues in taskDetails['TaskDescriptions']]
+    tasks=[Task(name=taskValues['taskName'],duration=taskValues['duration'])for taskValues in taskDetails['TaskDescriptions']]
 
     
     instances=FactBase(users+tasks)
