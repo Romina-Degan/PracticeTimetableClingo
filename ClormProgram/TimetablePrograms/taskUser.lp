@@ -4,14 +4,15 @@ taskValues(1..4).
 
 
 
-
-
 task(N,D):-taskValues(N), durationVals(D).
+
+
 1 { assignment(N,U,T) : user(U),time(T)} 1 :- task(N,D).
+
 %Need to represent the idea of the total time of the tasks assigned to the user does not exceed a certain amount
 
+:- assignment(N1, U,T), assignment(N2,U,T), N1 != N2.
 
-:- assignment(C1, U,T), assignment(C2,U,T), C1 != C2.
 
 
 

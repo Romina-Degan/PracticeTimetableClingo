@@ -4,7 +4,14 @@
                     "name":"Alex","userID":1234,
                     "hiveID":3456,
                     "availableMin": 1700,
-                    "avaliableMax": 2200
+                    "avaliableMax": 2200,
+                    "Mon":true,
+                    "Tue":true,
+                    "Wed":false,
+                    "Thur":false,
+                    "Fri":false,
+                    "Sat":true,
+                    "Sun":true
                     
                 },
                 {
@@ -12,7 +19,14 @@
                     "userID":12345,
                     "hiveID":3456,
                     "availableMin": 1800,
-                    "avaliableMax": 2200
+                    "avaliableMax": 2200,
+                    "Mon":false,
+                    "Tue":false,
+                    "Wed":true,
+                    "Thur":true,
+                    "Fri":true,
+                    "Sat":true,
+                    "Sun":true
                 }
             ]
 }

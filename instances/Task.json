@@ -1,9 +1,19 @@
 {
 
-    "TaskDescriptions":[
-        {"taskID":1, "taskName":"Hoover Place", "duration":60, "repetition":2, "timesRepeated":3},
-        {"taskID":2, "taskName":"Do Laundry", "duration":30,"repetition":2, "timesRepeated":1},
-        {"taskID":3, "taskName":"Clean Dishes", "duration":90, "repetition":7, "timesRepeated":8},
-        {"taskID":4, "taskName":"Take Trash Out", "duration":10, "repetition":2, "timesRepeated":1}
-    ]
+    "TaskValues":[
+        {"TaskDescriptions":[
+                {"taskID":1, "taskName":"Hoover Place", "duration":60, "date":"26/02/24","repetition":2, "timesRepeated":3,"reward":30},
+                {"taskID":2, "taskName":"Do Laundry" ,"duration":30,"repetition":2, "timesRepeated":1,"reward":10},
+                {"taskID":3, "taskName":"Clean Dishes" ,"duration":90, "repetition":7, "timesRepeated":8,"reward":20},
+                {"taskID":4, "taskName":"Take Trash Out","duration":10, "repetition":2, "timesRepeated":1,"reward":20}
+            ]
+        },{"DateDescription":[
+
+            {"startDate":"27/02/2024", "endDate":"05/02/2024"}
+
+        ]
+        }
+    
+]
 }
+   
