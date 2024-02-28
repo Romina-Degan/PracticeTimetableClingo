@@ -56,9 +56,10 @@ class Task(Predicate):
     #reward: int
 
 class Assignment(Predicate):
-    task:ConstantStr
+    taskValue:ConstantStr
     user:ConstantStr
- 
+    duration:int
+    avaliable:DayVals
     time:int
 
 
@@ -102,7 +103,7 @@ def main():
         else:
             print("User {} assigned to: ".format(u.name))
             for a in assignments:
-                print("\t chore {}, at time {}".format(a.task,a.time))
+                print("\t chore {}, at time {}".format(a.taskValue,a.time))
                 
     
     
