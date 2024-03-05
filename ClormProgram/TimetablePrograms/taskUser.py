@@ -46,10 +46,13 @@ class DayVals(Predicate):
 
 class User(Predicate):
     name:ConstantStr
+    userID:int
     avaliable:DayVals
     # ?minTime:int
     # maxTime:int
-
+class AssignDays(Predicate):
+    user:User
+    
 class Task(Predicate):
     name:ConstantStr
     duration:int
@@ -67,6 +70,8 @@ def main():
    
     # durations=[task['duration'] for task in taskDetails['TaskDescriptions']]
     # taskNames=[task['name'] for task in taskDetails['TaskDescriptions']]
+    
+    resultFactBase=FactBase()
     ctrl=clingo.Control(unifier=[User,Task,Assignment])
     clingoCtrl=clingo.Control()
     ctrl.load(ASP_PROGRAM)
@@ -77,7 +82,7 @@ def main():
 
     #So it does actually add to the factbase but it isnt in a way that is understandable for the parser
     #Users work when there is only one value within it?
-    users=[User(name=userValues['name'],avaliable=DayVals(mon=userValues['Mon'],tue=userValues['Tue'],wed=userValues['Wed'],thu=userValues['Thur'],fri=userValues['Fri'],sat=userValues['Sat'],sun=userValues['Sun'])) for userValues in userDetails['userSpecifications']]
+    users=[User(name=userValues['name'],userID=userValues['userID'],avaliable=DayVals(mon=userValues['Mon'],tue=userValues['Tue'],wed=userValues['Wed'],thu=userValues['Thur'],fri=userValues['Fri'],sat=userValues['Sat'],sun=userValues['Sun'])) for userValues in userDetails['userSpecifications']]
     tasks=[Task(name=taskValues['taskName'],duration=taskValues['duration'])for taskValues in taskDetails["TaskValues"][0]["TaskDescriptions"]]  
     instances=FactBase(users+tasks)
     print(instances)
@@ -93,17 +98,42 @@ def main():
     
     ctrl.solve(on_model=on_model)
     if not solution:
-        raise ValueError("YOU IDIOT >:(")
+        raise ValueError("No solution Found")
 
     query = solution.query(Assignment).where(Assignment.user == ph1_).order_by(Assignment.time)
+    results={}
     for u in users:
+        userValSet=set()
+       
         assignments = list(query.bind(u.name).all())
+        userID=u.userID
+        print(userID)
+        taskVals=[]
         if not assignments:
-            print("THIS IS NOT WORKING..YIPEE".format(u.name))
+            print("User not assigned any tasks!".format(u.name))
+            
         else:
             print("User {} assigned to: ".format(u.name))
+            
             for a in assignments:
                 print("\t chore {}, at time {}".format(a.taskValue,a.time))
+                taskVals.append({"TaskValue":a.taskValue, "time": a.time})
+
+        results[str(userID)] = taskVals
+                #taskVals=json.dumps({"name":u.name, "taskVal":a.taskValue, "taskTime":a.time}, indent=4)
+    with open('C:/Users/romin/DISS/PracticeTimetableClingo/ClormProgram/TimetablePrograms/result.json','w') as fp:
+        json.dump(results, fp, indent=4)
+        #json.dump({"{}".format(userID): (taskVals)},fp)
+            
+     #results.add((frozenset(userValSet)).union((frozenset(taskVals))))
+    
+
+    
+        
+   
+        #const userItems = JSON.stringify({ name: userName, userID: uid, hiveID: currentHive });
+
+                
                 
     
     
