@@ -34,20 +34,20 @@ class AvaliableDays(Predicate):
 
 #daysField=define_enum_field(ConstantField,AvaliableDays)
 #avaliableDays=refine_field(ConstantField, ["Monday","Teusday","Wednesday","Thursday","Friday","Saturday","Sunday"])
-#ENUM FIELD IS NOT SOMETHING YOU WANT THEY CANNOT BE QUERIED?
-class DayVals(Predicate):
-    mon:bool
-    tue:bool
-    wed:bool
-    thu:bool 
-    fri:bool
-    sat:bool
-    sun:bool
+# #ENUM FIELD IS NOT SOMETHING YOU WANT THEY CANNOT BE QUERIED?
+# class DayVals(Predicate):
+#     mon:bool
+#     tue:bool
+#     wed:bool
+#     thu:bool 
+#     fri:bool
+#     sat:bool
+#     sun:bool
 
 class User(Predicate):
     name:ConstantStr
     userID:int
-    avaliable:DayVals
+    #avaliable:DayVals
     # ?minTime:int
     # maxTime:int
 class AssignDays(Predicate):
@@ -56,14 +56,15 @@ class AssignDays(Predicate):
 class Task(Predicate):
     name:ConstantStr
     duration:int
-    #reward: int
+    repetitionVal:int
 
 class Assignment(Predicate):
     taskValue:ConstantStr
     user:ConstantStr
     duration:int
-    avaliable:DayVals
     time:int
+    days:int
+    repeitionValue:int
 
 
 def main():
@@ -82,8 +83,8 @@ def main():
 
     #So it does actually add to the factbase but it isnt in a way that is understandable for the parser
     #Users work when there is only one value within it?
-    users=[User(name=userValues['name'],userID=userValues['userID'],avaliable=DayVals(mon=userValues['Mon'],tue=userValues['Tue'],wed=userValues['Wed'],thu=userValues['Thur'],fri=userValues['Fri'],sat=userValues['Sat'],sun=userValues['Sun'])) for userValues in userDetails['userSpecifications']]
-    tasks=[Task(name=taskValues['taskName'],duration=taskValues['duration'])for taskValues in taskDetails["TaskValues"][0]["TaskDescriptions"]]  
+    users=[User(name=userValues['name'],userID=userValues['userID']) for userValues in userDetails['userSpecifications']]
+    tasks=[Task(name=taskValues['taskName'],duration=taskValues['duration'], repetitionVal=taskValues["repetition"])for taskValues in taskDetails["TaskValues"][0]["TaskDescriptions"]]  
     instances=FactBase(users+tasks)
     print(instances)
     ctrl.add_facts(instances)
@@ -107,7 +108,7 @@ def main():
        
         assignments = list(query.bind(u.name).all())
         userID=u.userID
-        print(userID)
+    
         taskVals=[]
         if not assignments:
             print("User not assigned any tasks!".format(u.name))
@@ -116,8 +117,8 @@ def main():
             print("User {} assigned to: ".format(u.name))
             
             for a in assignments:
-                print("\t chore {}, at time {}".format(a.taskValue,a.time))
-                taskVals.append({"TaskValue":a.taskValue, "time": a.time})
+                print("\t chore {}, at time {} on date {}".format(a.taskValue,a.time,a.days))
+                taskVals.append({"TaskValue":a.taskValue, "time": a.time, "dateIncrement":a.days})
 
         results[str(userID)] = taskVals
                 #taskVals=json.dumps({"name":u.name, "taskVal":a.taskValue, "taskTime":a.time}, indent=4)

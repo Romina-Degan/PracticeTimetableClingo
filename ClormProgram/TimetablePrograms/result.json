@@ -2,23 +2,187 @@
     "1234": [
         {
             "TaskValue": "Hoover Place",
-            "time": 5
+            "time": 25,
+            "dateIncrement": 7
+        },
+        {
+            "TaskValue": "Clean Dishes",
+            "time": 25,
+            "dateIncrement": 2
+        },
+        {
+            "TaskValue": "Clean Dishes",
+            "time": 26,
+            "dateIncrement": 2
+        },
+        {
+            "TaskValue": "Clean Dishes",
+            "time": 27,
+            "dateIncrement": 2
+        },
+        {
+            "TaskValue": "Clean Dishes",
+            "time": 28,
+            "dateIncrement": 2
+        },
+        {
+            "TaskValue": "Take Trash Out",
+            "time": 28,
+            "dateIncrement": 7
+        },
+        {
+            "TaskValue": "Clean Dishes",
+            "time": 29,
+            "dateIncrement": 2
         },
         {
             "TaskValue": "Do Laundry",
-            "time": 32
+            "time": 30,
+            "dateIncrement": 1
+        },
+        {
+            "TaskValue": "Clean Dishes",
+            "time": 30,
+            "dateIncrement": 2
+        },
+        {
+            "TaskValue": "Do Laundry",
+            "time": 31,
+            "dateIncrement": 1
+        },
+        {
+            "TaskValue": "Clean Dishes",
+            "time": 31,
+            "dateIncrement": 2
+        },
+        {
+            "TaskValue": "Take Trash Out",
+            "time": 32,
+            "dateIncrement": 7
         }
     ],
     "12345": [
         {
+            "TaskValue": "Take Trash Out",
+            "time": 2,
+            "dateIncrement": 4
+        },
+        {
+            "TaskValue": "Hoover Place",
+            "time": 4,
+            "dateIncrement": 1
+        },
+        {
             "TaskValue": "Clean Dishes",
-            "time": 32
+            "time": 8,
+            "dateIncrement": 7
+        },
+        {
+            "TaskValue": "Clean Dishes",
+            "time": 10,
+            "dateIncrement": 7
+        },
+        {
+            "TaskValue": "Clean Dishes",
+            "time": 12,
+            "dateIncrement": 7
+        },
+        {
+            "TaskValue": "Clean Dishes",
+            "time": 16,
+            "dateIncrement": 7
+        },
+        {
+            "TaskValue": "Clean Dishes",
+            "time": 20,
+            "dateIncrement": 7
+        },
+        {
+            "TaskValue": "Do Laundry",
+            "time": 24,
+            "dateIncrement": 7
+        },
+        {
+            "TaskValue": "Clean Dishes",
+            "time": 24,
+            "dateIncrement": 7
+        },
+        {
+            "TaskValue": "Do Laundry",
+            "time": 32,
+            "dateIncrement": 7
+        },
+        {
+            "TaskValue": "Clean Dishes",
+            "time": 32,
+            "dateIncrement": 7
+        },
+        {
+            "TaskValue": "Take Trash Out",
+            "time": 32,
+            "dateIncrement": 3
         }
     ],
     "45678": [
         {
+            "TaskValue": "Hoover Place",
+            "time": 3,
+            "dateIncrement": 5
+        },
+        {
+            "TaskValue": "Clean Dishes",
+            "time": 4,
+            "dateIncrement": 7
+        },
+        {
+            "TaskValue": "Do Laundry",
+            "time": 8,
+            "dateIncrement": 1
+        },
+        {
+            "TaskValue": "Clean Dishes",
+            "time": 8,
+            "dateIncrement": 7
+        },
+        {
+            "TaskValue": "Do Laundry",
+            "time": 16,
+            "dateIncrement": 1
+        },
+        {
+            "TaskValue": "Clean Dishes",
+            "time": 16,
+            "dateIncrement": 6
+        },
+        {
+            "TaskValue": "Clean Dishes",
+            "time": 16,
+            "dateIncrement": 7
+        },
+        {
             "TaskValue": "Take Trash Out",
-            "time": 27
+            "time": 16,
+            "dateIncrement": 4
+        },
+        {
+            "TaskValue": "Take Trash Out",
+            "time": 20,
+            "dateIncrement": 4
+        },
+        {
+            "TaskValue": "Clean Dishes",
+            "time": 24,
+            "dateIncrement": 7
+        },
+        {
+            "TaskValue": "Clean Dishes",
+            "time": 32,
+            "dateIncrement": 6
+        },
+        {
+            "TaskValue": "Clean Dishes",
+            "time": 32,
+            "dateIncrement": 7
         }
     ]
 }
