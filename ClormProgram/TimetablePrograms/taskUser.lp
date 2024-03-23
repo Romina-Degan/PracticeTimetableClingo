@@ -1,10 +1,6 @@
 time(T):-T=1..32.
 days(DA):-DA=1..7.
 
-assignment(C):- assignment(C,_,_,_,_).
-
-
-
 
 %:-chore(C,T1), chore(C,T2), T1<T2.
 
@@ -13,17 +9,11 @@ assignment(C):- assignment(C,_,_,_,_).
 
 R{assignment(C,U,D,T,DA,R) :time(T),days(DA)} 32 :- task(C,D,R),user(U,ID).
 
+
+timeConflict(C1,T1, DA1, C2,T2,DA2,U) :- assignment(C1,U,_,T1,DA1,_), assignment(C2,U,_,T2,DA2,_), T1!=T2, DA1!=DA2. 
+:- assignment(C1,U1,_,T,DA,_), assignment(C2,U2,_,T,DA,_), U1 !=U2, C1!=C2.
 %timeConflict(C1,C2,T1,T2) :- ass
 
-
-
-%tconflict(C,T1), tconflict(C,T2) :- assignment (C,U,_,T1,_), assigmnet(C,U,_,T2,_), T1!=T2.
-
-
-%conflict(C,T) :- assigmnet(C,U1,_,T,_) , assigmnet(C,U2,_,T,_), U1 !=U2.
-
-
-%:-time(T1),time(T2), T1!=T2, assignment(C,T1), assignment(C,T2).
 
 %The order is that the chores, users, duration,time, days 
 %Need to make sure that the assignment of task not at the same time

@@ -6,6 +6,7 @@ with open(r"C:\Users\romin\DISS\PracticeTimetableClingo\instances\Task.json") as
 with open(r"C:\Users\romin\DISS\PracticeTimetableClingo\instances\CBW.json") as userFile:
     userDetails=json.load(userFile)
 
+
 from clorm import monkey
 from typing import Tuple,List
 monkey.patch()
@@ -47,6 +48,7 @@ class AvaliableDays(Predicate):
 class User(Predicate):
     name:ConstantStr
     userID:int
+    
     #avaliable:DayVals
     # ?minTime:int
     # maxTime:int
@@ -68,7 +70,7 @@ class Assignment(Predicate):
 
 
 def main():
-   
+    prefTask=[]
     # durations=[task['duration'] for task in taskDetails['TaskDescriptions']]
     # taskNames=[task['name'] for task in taskDetails['TaskDescriptions']]
     
@@ -83,12 +85,48 @@ def main():
 
     #So it does actually add to the factbase but it isnt in a way that is understandable for the parser
     #Users work when there is only one value within it?
-    users=[User(name=userValues['name'],userID=userValues['userID']) for userValues in userDetails['userSpecifications']]
-    tasks=[Task(name=taskValues['taskName'],duration=taskValues['duration'], repetitionVal=taskValues["repetition"])for taskValues in taskDetails["TaskValues"][0]["TaskDescriptions"]]  
-    instances=FactBase(users+tasks)
-    print(instances)
-    ctrl.add_facts(instances)
-    ctrl.ground([("base", [])])
+    users = [User(name=userValues['name'], 
+                  userID=userValues['userID'])
+                  for userValues in userDetails['userSpecifications']]
+    
+
+
+    for members in users:
+        currUser=(list(filter(lambda x:(x["userID"]==members.userID),userDetails['userSpecifications'])))
+        currPref=currUser[0]['prefer']
+        for items in currPref:
+            prefTask=[]            
+            for taskValues in  taskDetails["TaskValues"][0]["TaskDescriptions"]:
+                print("-------")
+                print(taskValues)
+                print("-------")
+                if items in taskValues['label'] and taskValues not in prefTask :
+                    prefTask.append(taskValues)
+                    print("User",members)
+                    print("-----------------")
+                    print(prefTask)
+                    print("-----------------")
+
+
+
+        #instance= FactBase(members+prefTask)
+
+            # for taskValues in taskDetails["TaskValues"][0]["TaskDescriptions"]:
+            #     print(items)
+            #     if items == taskValues['label']:   
+            #         prefTask.append(list(filter(lambda x:(x['label']==items),taskValues)))
+            #         print(prefTask)
+
+    #     for items in userListVal:
+    #         userPrefrences.append(items)
+    #     for taskValues in taskDetails["TaskValues"][0]["TaskDescriptions"]:
+    #         if taskValues['label'] in userPrefrences:
+    #             tasks=[Task(name=taskValues['taskName'],duration=taskValues['duration'], repetitionVal=taskValues["repetition"])]  
+    #             print(users,tasks)
+    #             instances=FactBase(users+tasks)
+    #             print(instances)
+    #             ctrl.add_facts(instances)
+    # ctrl.ground([("base", [])])
    
 
     solution=None
@@ -104,7 +142,7 @@ def main():
     query = solution.query(Assignment).where(Assignment.user == ph1_).order_by(Assignment.time)
     results={}
     for u in users:
-        userValSet=set()
+        
        
         assignments = list(query.bind(u.name).all())
         userID=u.userID
