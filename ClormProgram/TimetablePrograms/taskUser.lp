@@ -11,7 +11,7 @@ assignment(C):- assignment(C,_,_,_,_).
 
 %The assigmnet value here is determined by the number at the start so 4 timeslots and 4 tasks min will be asigned to the user
 
-R{assignment(C,U,D,T,DA,R),user(U,ID):time(T),days(DA)} 32 :- task(C,D,R),user(U,ID).
+R{assignment(C,U,D,T,DA,R) :time(T),days(DA)} 32 :- task(C,D,R),user(U,ID).
 
 %timeConflict(C1,C2,T1,T2) :- ass
 
