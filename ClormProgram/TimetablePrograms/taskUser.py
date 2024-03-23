@@ -59,6 +59,7 @@ class Task(Predicate):
     name:ConstantStr
     duration:int
     repetitionVal:int
+    user:User
 
 class Assignment(Predicate):
     taskValue:ConstantStr
@@ -88,25 +89,34 @@ def main():
     users = [User(name=userValues['name'], 
                   userID=userValues['userID'])
                   for userValues in userDetails['userSpecifications']]
-    
-
-
+    instances= FactBase(users)
+    ctrl.add_facts(instances)
     for members in users:
+        currTask=[]
+        counter=0
         currUser=(list(filter(lambda x:(x["userID"]==members.userID),userDetails['userSpecifications'])))
         currPref=currUser[0]['prefer']
         for items in currPref:
             prefTask=[]            
             for taskValues in  taskDetails["TaskValues"][0]["TaskDescriptions"]:
                 if items in taskValues['label'] and taskValues not in prefTask :
-                    prefTask.append(taskValues)
+                    #prefTask.append(taskValues)
                     # print("User",members.name)
                     # print ("\n",prefTask)
                     # print("-----------------")
-        print(members.name)
-        for tasks in prefTask:
+                  
+                    currTask=[Task(name=taskValues['taskName'],duration=taskValues['duration'], repetitionVal=taskValues["repetition"],user=members)]
+                    instances= FactBase(currTask)
+                    
+                    print(instances)
+                    ctrl.add_facts(instances)
+        counter +=1
+    ctrl.ground([("base", [])])
+        # print(members.name)
+        # for tasks in prefTask:
 
-            print(tasks)
-        print("------------")
+        #     print(tasks['taskName'])
+        # print()
 
 
 
