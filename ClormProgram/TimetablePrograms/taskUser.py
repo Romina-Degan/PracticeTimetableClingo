@@ -97,15 +97,16 @@ def main():
         for items in currPref:
             prefTask=[]            
             for taskValues in  taskDetails["TaskValues"][0]["TaskDescriptions"]:
-                print("-------")
-                print(taskValues)
-                print("-------")
                 if items in taskValues['label'] and taskValues not in prefTask :
                     prefTask.append(taskValues)
-                    print("User",members)
-                    print("-----------------")
-                    print(prefTask)
-                    print("-----------------")
+                    # print("User",members.name)
+                    # print ("\n",prefTask)
+                    # print("-----------------")
+        print(members.name)
+        for tasks in prefTask:
+
+            print(tasks)
+        print("------------")
 
 
 
