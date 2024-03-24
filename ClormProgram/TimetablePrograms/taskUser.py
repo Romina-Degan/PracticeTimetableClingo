@@ -48,22 +48,29 @@ class AvaliableDays(Predicate):
 class User(Predicate):
     name:ConstantStr
     userID:int
+    minVal:int
+    maxVal:int 
     
     #avaliable:DayVals
     # ?minTime:int
     # maxTime:int
-class AssignDays(Predicate):
-    user:User
     
 class Task(Predicate):
     name:ConstantStr
     duration:int
     repetitionVal:int
-    user:User
+
+class PreferredTask(Predicate):
+    name:ConstantStr
+    duration:int
+    repetitionVal: int
+    user:int
+
 
 class Assignment(Predicate):
     taskValue:ConstantStr
     user:ConstantStr
+    userID:int
     duration:int
     time:int
     days:int
@@ -75,8 +82,7 @@ def main():
     # durations=[task['duration'] for task in taskDetails['TaskDescriptions']]
     # taskNames=[task['name'] for task in taskDetails['TaskDescriptions']]
     
-    resultFactBase=FactBase()
-    ctrl=clingo.Control(unifier=[User,Task,Assignment])
+    ctrl=clingo.Control(unifier=[User,Task,Assignment,PreferredTask])
     clingoCtrl=clingo.Control()
     ctrl.load(ASP_PROGRAM)
     # startDate = taskDetails["TaskValues"][1]["DateDescription"][0]["startDate"]
@@ -87,9 +93,14 @@ def main():
     #So it does actually add to the factbase but it isnt in a way that is understandable for the parser
     #Users work when there is only one value within it?
     users = [User(name=userValues['name'], 
-                  userID=userValues['userID'])
+                  userID=userValues['userID'], 
+                  minVal=userValues['availableMin'],
+                  maxVal=userValues['avaliableMax'])
                   for userValues in userDetails['userSpecifications']]
-    instances= FactBase(users)
+    tasks=[Task(name=taskValues['taskName'],duration=taskValues['duration'], repetitionVal=taskValues["repetition"])for taskValues in taskDetails["TaskValues"][0]["TaskDescriptions"]] 
+    
+    instances= FactBase(users+tasks)
+   
     ctrl.add_facts(instances)
     for members in users:
         currTask=[]
@@ -99,18 +110,14 @@ def main():
         for items in currPref:
             prefTask=[]            
             for taskValues in  taskDetails["TaskValues"][0]["TaskDescriptions"]:
-                if items in taskValues['label'] and taskValues not in prefTask :
-                    #prefTask.append(taskValues)
-                    # print("User",members.name)
-                    # print ("\n",prefTask)
-                    # print("-----------------")
+                if items in taskValues['label'] and taskValues not in prefTask :    
+                    #REMEMBER FOR THIS THE CLASS FOR TASK THE ID IS SET TO INT SINCE JSON FILE IS INT BUT REAL IS STR
                   
-                    currTask=[Task(name=taskValues['taskName'],duration=taskValues['duration'], repetitionVal=taskValues["repetition"],user=members)]
-                    instances= FactBase(currTask)
-                    
-                    print(instances)
+                    currTask=[PreferredTask(name=taskValues['taskName'],duration=taskValues['duration'], repetitionVal=taskValues["repetition"],user=members.userID)]
+                    instances.add(FactBase(currTask))
+                
                     ctrl.add_facts(instances)
-        counter +=1
+
     ctrl.ground([("base", [])])
         # print(members.name)
         # for tasks in prefTask:
@@ -144,7 +151,7 @@ def main():
     
     def on_model(model):
         nonlocal solution
-        solution=model.facts(unifier=[User,Task,Assignment], atoms=True,raise_on_empty=True)
+        solution=model.facts(unifier=[User,Task,Assignment,PreferredTask], atoms=True,raise_on_empty=True)
     
     ctrl.solve(on_model=on_model)
     if not solution:
@@ -152,12 +159,11 @@ def main():
 
     query = solution.query(Assignment).where(Assignment.user == ph1_).order_by(Assignment.time)
     results={}
-    for u in users:
-        
-       
-        assignments = list(query.bind(u.name).all())
+    print(instances)
+    for u in users: 
+        assignments = list(query.bind(u.name ).all())
+        print(assignments)
         userID=u.userID
-    
         taskVals=[]
         if not assignments:
             print("User not assigned any tasks!".format(u.name))

@@ -15,24 +15,9 @@
                     "Sat":true,
                     "Sun":true
                     
-                },
-                {
-                    "name":"Brain",
-                    "userID":12345,
-                    "hiveID":3456,
-                    "prefer":["All"],
-                    "availableMin": 15,
-                    "avaliableMax": 28,
-                    "Mon":false,
-                    "Tue":false,
-                    "Wed":true,
-                    "Thur":true,
-                    "Fri":true,
-                    "Sat":true,
-                    "Sun":true
                 },{
                     "name":"Amanda",
-                    "userID":45678,
+                    "userID":9101112,
                     "hiveID":3456,
                     "prefer":["Bathroom"],
                     "availableMin": 12,
@@ -43,6 +28,20 @@
                     "Thur":true,
                     "Fri":true,
                     "Sat":false,
+                    "Sun":true
+                },{
+                    "name":"Brain",
+                    "userID":5678,
+                    "hiveID":3456,
+                    "prefer":["All"],
+                    "availableMin": 15,
+                    "avaliableMax": 28,
+                    "Mon":false,
+                    "Tue":false,
+                    "Wed":true,
+                    "Thur":true,
+                    "Fri":true,
+                    "Sat":true,
                     "Sun":true
                 }
             ]

@@ -1,17 +1,22 @@
 time(T):-T=1..32.
-days(DA):-DA=1..7.
+date(DA):-DA=1..7.
 
 
 %:-chore(C,T1), chore(C,T2), T1<T2.
 
-
 %The assigmnet value here is determined by the number at the start so 4 timeslots and 4 tasks min will be asigned to the user
 
-R{assignment(C,U,D,T,DA,R) :time(T),days(DA)} 32 :- task(C,D,R,U),user(U,ID).
+1{assignment(C,U,ID,D,T,DA,R) :time(T),date(DA)} :- preferredTask(C,D,R,PID),user(U,ID,MI,MX), time(T), T>=MI, T<=MX, PID=ID.
+
+
+%:-assignment(_,_,ID1,_,_,_,_), assignment(_,_,ID2,_,_,_,_), pref()
+
+%R{assignment(C,U,D,T,DA,R) :time(T),days(DA)} 32 :- task(C,D,R,U),user(U,ID).
 
 
 %timeConflict(C1,T1, DA1, C2,T2,DA2,U) :- assignment(C1,U,_,T1,DA1,_), assignment(C2,U,_,T2,DA2,_), T1!=T2, DA1!=DA2. 
 %:- assignment(C1,U1,_,T,DA,_), assignment(C2,U2,_,T,DA,_), U1 !=U2, C1!=C2.
+
 
 
 
