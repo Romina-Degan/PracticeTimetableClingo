@@ -111,7 +111,7 @@ def main():
             prefTask=[]            
             for taskValues in  taskDetails["TaskValues"][0]["TaskDescriptions"]:
                 if items in taskValues['label'] and taskValues not in prefTask :    
-                    #REMEMBER FOR THIS THE CLASS FOR TASK THE ID IS SET TO INT SINCE JSON FILE IS INT BUT REAL IS STR
+                    #REMEMBER FOR THIS THE CLASS FOR TAS?K THE ID IS SET TO INT SINCE JSON FILE IS INT BUT REAL IS STR
                   
                     currTask=[PreferredTask(name=taskValues['taskName'],duration=taskValues['duration'], repetitionVal=taskValues["repetition"],user=members.userID)]
                     instances.add(FactBase(currTask))
@@ -162,7 +162,6 @@ def main():
     print(instances)
     for u in users: 
         assignments = list(query.bind(u.name ).all())
-        print(assignments)
         userID=u.userID
         taskVals=[]
         if not assignments:

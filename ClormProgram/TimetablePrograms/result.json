@@ -185,7 +185,7 @@
         {
             "TaskValue": "Clean Bathroom",
             "time": 18,
-            "dateIncrement": 3
+            "dateIncrement": 4
         },
         {
             "TaskValue": "Clean Bathroom",
@@ -377,7 +377,7 @@
         {
             "TaskValue": "Clean Living Room",
             "time": 18,
-            "dateIncrement": 3
+            "dateIncrement": 4
         },
         {
             "TaskValue": "Hoover Place",
@@ -462,7 +462,7 @@
         {
             "TaskValue": "Clean Bathroom",
             "time": 21,
-            "dateIncrement": 7
+            "dateIncrement": 4
         },
         {
             "TaskValue": "Clean Living Room",
@@ -617,7 +617,7 @@
         {
             "TaskValue": "Clean Living Room",
             "time": 26,
-            "dateIncrement": 4
+            "dateIncrement": 5
         },
         {
             "TaskValue": "Hoover Place",
@@ -677,7 +677,7 @@
         {
             "TaskValue": "Clean Living Room",
             "time": 28,
-            "dateIncrement": 5
+            "dateIncrement": 7
         }
     ]
 }
