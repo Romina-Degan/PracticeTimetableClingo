@@ -3,14 +3,29 @@ date(DA):-DA=1..7.
 
 
 %:-chore(C,T1), chore(C,T2), T1<T2.
-
+min(MI):- user(_,_,MI,_).
+max(MX):- user(_,_,_,MX).
 %The assigmnet value here is determined by the number at the start so 4 timeslots and 4 tasks min will be asigned to the user
 
-{assignment(C,U,ID,D,T,DA,R) :time(T),date(DA)} =1:- preferredTask(C,D,R,PID),user(U,ID,MI,MX), time(T), T>=MI, T<=MX, PID=ID.
+{assignment(C,TID,U,ID,D,T,R,DA) :time(T),date(DA)}=1 :- 
+    preferredTask(C,D,R,PID,TID),
+    user(U,ID,MI,MX), 
+    time(T), 
+    T>=MI, T<=MX, 
+    PID=ID,
+    #count {1:assignment(C_,_,_,_,_,_,_)}<=R.
+    % TRY ADDING A SUM CONDITION HERE THAT IS DESIGNED TO LIMIT THE AMOUNT OF TIMES A TASK IS DONE IN ONE DAY 
+    % assignment(_,TID1,U,ID1,_,T1,_,DA1),assigmnet(_,TID2,U,ID2,_,T2,_,DA2),
+    % TID1!=TD.
 
-:-assigmnet(C1,_,_,_,T1,_,_),assigmnet(C2,_,_,_,T2,_,_), preferredTask(C1,_,_,PID1), preferredTask(C2,_,_,PID2), C1!=C2, T1!=T2, PID1!=PID2.
 
 
+
+%KEEEEP THISSS
+%{assignment(C,TID,U,ID,D,T,R) :user(U,ID,MI,MX),preferredTask(C,D,R,ID,TID),time(T)}=R:- .
+%KEEEEP THISSS
+
+%:- assignment(C1,_,_,_,_,_,_), assignment(C2,_,_,_,_,_,_), C1=C2.
 
 
 %#minimize {T@1,C,U: assigmnet(C,U,_,_,T,_,_)}.

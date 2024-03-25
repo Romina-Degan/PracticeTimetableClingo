@@ -65,16 +65,18 @@ class PreferredTask(Predicate):
     duration:int
     repetitionVal: int
     user:int
+    taskID:int
 
 
 class Assignment(Predicate):
     taskValue:ConstantStr
+    taskID:int
     user:ConstantStr
     userID:int
     duration:int
     time:int
-    days:int
     repeitionValue:int
+    date:int
 
 
 def main():
@@ -113,7 +115,7 @@ def main():
                 if items in taskValues['label'] and taskValues not in prefTask :    
                     #REMEMBER FOR THIS THE CLASS FOR TAS?K THE ID IS SET TO INT SINCE JSON FILE IS INT BUT REAL IS STR
                   
-                    currTask=[PreferredTask(name=taskValues['taskName'],duration=taskValues['duration'], repetitionVal=taskValues["repetition"],user=members.userID)]
+                    currTask=[PreferredTask(name=taskValues['taskName'],duration=taskValues['duration'], repetitionVal=taskValues["repetition"],user=members.userID, taskID=taskValues['taskID'])]
                     instances.add(FactBase(currTask))
                 
                     ctrl.add_facts(instances)
@@ -161,6 +163,8 @@ def main():
     results={}
     print(instances)
     for u in users: 
+        currentTaskDuration=Assignment.duration
+        print(currentTaskDuration)
         assignments = list(query.bind(u.name ).all())
         userID=u.userID
         taskVals=[]
@@ -171,8 +175,10 @@ def main():
             print("User {} assigned to: ".format(u.name))
             
             for a in assignments:
-                print("\t chore {}, at time {} on date {}".format(a.taskValue,a.time,a.days))
-                taskVals.append({"TaskValue":a.taskValue, "time": a.time, "dateIncrement":a.days})
+                currentDuration=a.duration
+                print(currentDuration)
+                print("\t chore {}, at time {} at date{}".format(a.taskValue,a.time,a.date))
+                taskVals.append({"TaskValue":a.taskValue, "time": a.time})
 
         results[str(userID)] = taskVals
                 #taskVals=json.dumps({"name":u.name, "taskVal":a.taskValue, "taskTime":a.time}, indent=4)
