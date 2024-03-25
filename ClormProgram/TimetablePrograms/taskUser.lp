@@ -12,8 +12,10 @@ max(MX):- user(_,_,_,MX).
     user(U,ID,MI,MX), 
     time(T), 
     T>=MI, T<=MX, 
-    PID=ID,
-    #count {1:assignment(C_,_,_,_,_,_,_)}<=R.
+    PID=ID.
+    % assignment(_,_,U1,_,D1,T1,_,_), assignment(_,_,U2,_,_,T2,_,_),
+    % T2!=(T1+D1), 
+    % U1=U2.
     % TRY ADDING A SUM CONDITION HERE THAT IS DESIGNED TO LIMIT THE AMOUNT OF TIMES A TASK IS DONE IN ONE DAY 
     % assignment(_,TID1,U,ID1,_,T1,_,DA1),assigmnet(_,TID2,U,ID2,_,T2,_,DA2),
     % TID1!=TD.
