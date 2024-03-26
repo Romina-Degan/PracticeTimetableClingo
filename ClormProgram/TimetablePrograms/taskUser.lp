@@ -7,15 +7,16 @@ min(MI):- user(_,_,MI,_).
 max(MX):- user(_,_,_,MX).
 %The assigmnet value here is determined by the number at the start so 4 timeslots and 4 tasks min will be asigned to the user
 
-{assignment(C,TID,U,ID,D,T,R,DA) :time(T),date(DA)}=1 :- 
-    preferredTask(C,D,R,PID,TID),
+1{assignment(C,TID,U,ID,D,T,R,DA) :time(T)}7 :- 
+    date(DA),
+    preferredDays(DY,DID),
+    preferredTask(C,D,R,PID,TID,MT),
     user(U,ID,MI,MX), 
     time(T), 
-    T>=MI, T<=MX, 
+    T>=MI, T<=MX,T>=MT, 
+    DY= DA, ID=DID, 
     PID=ID.
-    % assignment(_,_,U1,_,D1,T1,_,_), assignment(_,_,U2,_,_,T2,_,_),
-    % T2!=(T1+D1), 
-    % U1=U2.
+
     % TRY ADDING A SUM CONDITION HERE THAT IS DESIGNED TO LIMIT THE AMOUNT OF TIMES A TASK IS DONE IN ONE DAY 
     % assignment(_,TID1,U,ID1,_,T1,_,DA1),assigmnet(_,TID2,U,ID2,_,T2,_,DA2),
     % TID1!=TD.

@@ -6,29 +6,17 @@
                     "hiveID":3456,
                     "availableMin": 1,
                     "avaliableMax": 15,
-                    "prefer":["Kitchen","Living Room"],
-                    "Mon":true,
-                    "Tue":true,
-                    "Wed":false,
-                    "Thur":false,
-                    "Fri":false,
-                    "Sat":true,
-                    "Sun":true
+                    "prefer":["Kitchen","Living Room","Personal"],
+                    "dayPrefer":[1,2,4]
                     
                 },{
                     "name":"Amanda",
                     "userID":9101112,
                     "hiveID":3456,
-                    "prefer":["Bathroom"],
+                    "prefer":["Bathroom","Personal"],
                     "availableMin": 12,
                     "avaliableMax": 32,
-                    "Mon":true,
-                    "Tue":false,
-                    "Wed":false,
-                    "Thur":true,
-                    "Fri":true,
-                    "Sat":false,
-                    "Sun":true
+                    "dayPrefer":[5,4,7]
                 },{
                     "name":"Brain",
                     "userID":5678,
@@ -36,13 +24,7 @@
                     "prefer":["All"],
                     "availableMin": 15,
                     "avaliableMax": 28,
-                    "Mon":false,
-                    "Tue":false,
-                    "Wed":true,
-                    "Thur":true,
-                    "Fri":true,
-                    "Sat":true,
-                    "Sun":true
+                    "dayPrefer":[1,2,3,4,5,6,7]
                 }
             ]
 }

@@ -38,6 +38,10 @@ class User(Predicate):
     userID:int
     minVal:int
     maxVal:int 
+
+class PreferredDays(Predicate):
+    dateVal:int
+    userID:int
     
     #avaliable:DayVals
     # ?minTime:int
@@ -54,6 +58,7 @@ class PreferredTask(Predicate):
     repetitionVal: int
     user:int
     taskID:int
+    minTime:int
 
 
 class Assignment(Predicate):
@@ -70,7 +75,7 @@ class Assignment(Predicate):
 def main():
     prefTask=[]
     
-    ctrl=clingo.Control(unifier=[User,Assignment,PreferredTask])
+    ctrl=clingo.Control(unifier=[User,Assignment,PreferredTask,PreferredDays])
     clingoCtrl=clingo.Control()
     ctrl.load(ASP_PROGRAM)
 
@@ -81,8 +86,10 @@ def main():
                   minVal=userValues['availableMin'],
                   maxVal=userValues['avaliableMax'])
                   for userValues in userDetails['userSpecifications']]
-    #tasks=[Task(name=taskValues['taskName'],duration=taskValues['duration'], repetitionVal=taskValues["repetition"])for taskValues in taskDetails["TaskValues"][0]["TaskDescriptions"]] 
     
+    
+    #tasks=[Task(name=taskValues['taskName'],duration=taskValues['duration'], repetitionVal=taskValues["repetition"])for taskValues in taskDetails["TaskValues"][0]["TaskDescriptions"]] 
+   
     instances= FactBase(users)
    
     ctrl.add_facts(instances)
@@ -91,33 +98,56 @@ def main():
         counter=0
         currUser=(list(filter(lambda x:(x["userID"]==members.userID),userDetails['userSpecifications'])))
         currPref=currUser[0]['prefer']
+        currDay=currUser[0]['dayPrefer']
+                                                             
+        for days in currDay:
+            instances.add(FactBase(PreferredDays(dateVal=days,userID=members.userID)))
+            ctrl.add_facts(instances)
+        
         for items in currPref:
             prefTask=[]            
             for taskValues in  taskDetails["TaskValues"][0]["TaskDescriptions"]:
+
                 if items in taskValues['label'] and taskValues not in prefTask :    
                     #REMEMBER FOR THIS THE CLASS FOR TAS?K THE ID IS SET TO INT SINCE JSON FILE IS INT BUT REAL IS STR
                   
-                    currTask=[PreferredTask(name=taskValues['taskName'],duration=taskValues['duration'], repetitionVal=taskValues["repetition"],user=members.userID, taskID=taskValues['taskID'])]
+                    currTask=[PreferredTask(name=taskValues['taskName'],duration=taskValues['duration'], repetitionVal=taskValues["repetition"],user=members.userID, taskID=taskValues['taskID'],minTime=taskValues["minTime"])]
                     instances.add(FactBase(currTask))
                 
                     ctrl.add_facts(instances)
 
     ctrl.ground([("base", [])])
-
+    print(instances)
     solution=None
     
     def on_model(model):
         nonlocal solution
-        solution=model.facts(unifier=[User,Task,Assignment,PreferredTask], atoms=True,raise_on_empty=True)
+        solution=model.facts(unifier=[User,Task,Assignment,PreferredTask,PreferredDays], atoms=True,raise_on_empty=True)
     
     ctrl.solve(on_model=on_model)
     if not solution:
         raise ValueError("No solution Found")
 
-    query = solution.query(Assignment).where(Assignment.user == ph1_).order_by(Assignment.time)
-    membersChores= instances.query(User, Assignment).join(User.userID==Assignment.userID)
+    query = solution.query(Assignment).where(Assignment.user == ph1_).order_by(Assignment.date)
+    
     results={}
-    #print(membersChores)
+    
+    # for u in users:
+    #     taskVals=[]
+    #     assignments=list(query.bind(u.name).all())
+    #     if not assignments:
+    #         print("User not assigned any tasks!".format(u.name))
+
+    #     else:
+    #         taskQuery=solution.query(Assignment,PreferredTask).join(Assignment.taskID==PreferredTask.taskID)\
+    #         .select(lambda taskVal,assignID: f"{taskVal.time, taskVal.userID, taskVal.taskValue} from {assignID.taskID}")
+    #         print("\n")
+    #         print("User {}".format(u.name))
+    #         results=taskQuery.all()
+    #         for result in results:
+    #             print(result)
+    #         FROM HERE YOU NOW NEED TO DELETE THE RESULTS OF THE DATES THAT THE USERS DO NOT PREFER 
+            
 
     for u in users: 
         currentTaskDuration=Assignment.duration
