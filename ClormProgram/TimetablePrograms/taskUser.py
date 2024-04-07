@@ -35,13 +35,13 @@ class AvaliableDays(Predicate):
 # #ENUM FIELD IS NOT SOMETHING YOU WANT THEY CANNOT BE QUERIED?
 class User(Predicate):
     name:ConstantStr
-    userID:int
+    userID:ConstantStr
     minVal:int
     maxVal:int 
 
 class PreferredDays(Predicate):
     dateVal:int
-    userID:int
+    userID:ConstantStr
     
     #avaliable:DayVals
     # ?minTime:int
@@ -56,7 +56,7 @@ class PreferredTask(Predicate):
     name:ConstantStr
     duration:int
     repetitionVal: int
-    user:int
+    user:ConstantStr
     taskID:int
     minTime:int
 
@@ -65,7 +65,7 @@ class Assignment(Predicate):
     taskValue:ConstantStr
     taskID:int
     user:ConstantStr
-    userID:int
+    userID:ConstantStr
     duration:int
     time:int
     repeitionValue:int

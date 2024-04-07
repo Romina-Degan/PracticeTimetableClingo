@@ -7,16 +7,42 @@ min(MI):- user(_,_,MI,_).
 max(MX):- user(_,_,_,MX).
 %The assigmnet value here is determined by the number at the start so 4 timeslots and 4 tasks min will be asigned to the user
 
-1{assignment(C,TID,U,ID,D,T,R,DA) :time(T)}7 :- 
-    date(DA),
-    preferredDays(DY,DID),
-    preferredTask(C,D,R,PID,TID,MT),
-    user(U,ID,MI,MX), 
-    time(T), 
-    T>=MI, T<=MX,T>=MT, 
-    DY= DA, ID=DID, 
-    PID=ID.
+1{assignment(C,TID,U,ID,D,T,R,DA) :user(U,ID,MI,MX),time(T),date(DA)}1 :- 
+        preferredTask(C,D,R,PID,TID,MT), PID=ID,
+        preferredDays(DY,DID),
+        DY= DA, ID=DID.
+:- assignment(C1,_,U1,_,_,T,_,DA) ,  assignment(C2,_,U2,_,_,T,_,DA), C1!=C2. 
+:-assignment(_,_,_,_,_,T,_,_) , user(_,_,MI,MX),preferredTask(_,_,_,_,_,MT), T>=MI, T<=MX, T>=MT.
 
+#maximize {R@1, U: assignment(_,_,U,_,_,_,R,_)}.
+    % date(DA),
+    % preferredDays(DY,DID),
+    % preferredTask(C,D,R,PID,TID,MT),
+    % user(U,ID,MI,MX),
+    % time(T), 
+    % T>=MI, T<=MX,T>=MT,  
+    % DY= DA, ID=DID, 
+    % PID=ID.
+
+
+
+
+
+
+
+
+
+% firstTime(T1) :- assignment(_,TID,_,_,_,T1,_,_).
+% secondTime(T2) :-assignment(_,TID,_,_,_,T2,_,_).
+% duration(D):-assignment(_,_,_,_,D,_,_,_).
+% #show firstTime(T1).
+%&diff {T1-T2}>=D :- firstTime(T1),secondTime(T2),duration(D).
+
+% 1{start(TID): preferredTask(_,_,_,_,TID,_)}1.
+% permutation(TID1,C2) :- assignment(_,TID,_,_,_,_,_,_)
+% assigmnet(_,TID,_,ID,D,T1,_,DA)
+
+%  &diff {T1-T2} <=D :-assignment(_,TID,_,ID,D,T1,_,DA), assignment(_,TID,_,ID,D,T2,_,DA).
     % TRY ADDING A SUM CONDITION HERE THAT IS DESIGNED TO LIMIT THE AMOUNT OF TIMES A TASK IS DONE IN ONE DAY 
     % assignment(_,TID1,U,ID1,_,T1,_,DA1),assigmnet(_,TID2,U,ID2,_,T2,_,DA2),
     % TID1!=TD.
