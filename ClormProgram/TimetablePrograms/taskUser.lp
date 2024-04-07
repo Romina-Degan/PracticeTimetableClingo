@@ -13,8 +13,10 @@ max(MX):- user(_,_,_,MX).
         DY= DA, ID=DID.
 :- assignment(C1,_,U1,_,_,T,_,DA) ,  assignment(C2,_,U2,_,_,T,_,DA), C1!=C2. 
 :-assignment(_,_,_,_,_,T,_,_) , user(_,_,MI,MX),preferredTask(_,_,_,_,_,MT), T>=MI, T<=MX, T>=MT.
-
+:-assignment(_,_,_,_,D,T1,_,DA), assignment(_,_,_,_,D,T2,_,DA), T1-T2 = D.
 #maximize {R@1, U: assignment(_,_,U,_,_,_,R,_)}.
+
+
     % date(DA),
     % preferredDays(DY,DID),
     % preferredTask(C,D,R,PID,TID,MT),
@@ -23,13 +25,6 @@ max(MX):- user(_,_,_,MX).
     % T>=MI, T<=MX,T>=MT,  
     % DY= DA, ID=DID, 
     % PID=ID.
-
-
-
-
-
-
-
 
 
 % firstTime(T1) :- assignment(_,TID,_,_,_,T1,_,_).
