@@ -2,77 +2,77 @@
     "mlQUmZ4ucvaItkqLuVUHwoaJDb03": [
         {
             "TaskValue": "Clean Dishes",
-            "time": 31
+            "time": 23
         },
         {
             "TaskValue": "Do Laundry",
-            "time": 27
+            "time": 24
         },
         {
             "TaskValue": "Clean Dishes",
-            "time": 2
+            "time": 23
         },
         {
             "TaskValue": "Do Laundry",
-            "time": 31
+            "time": 24
         },
         {
             "TaskValue": "Clean Dishes",
-            "time": 29
+            "time": 24
         },
         {
             "TaskValue": "Do Laundry",
-            "time": 28
+            "time": 16
         }
     ],
     "Dc2CpwAr5UfHuPdVeaQwmCzB8rZ2": [
         {
             "TaskValue": "Clean Bathroom",
-            "time": 29
+            "time": 26
         },
         {
             "TaskValue": "Clean Living Room",
-            "time": 1
+            "time": 9
         },
         {
             "TaskValue": "Do Laundry",
-            "time": 2
+            "time": 5
         },
         {
             "TaskValue": "Clean Bathroom",
-            "time": 2
+            "time": 26
         },
         {
             "TaskValue": "Clean Living Room",
-            "time": 29
+            "time": 7
         },
         {
             "TaskValue": "Do Laundry",
-            "time": 32
+            "time": 5
         },
         {
             "TaskValue": "Clean Bathroom",
-            "time": 2
+            "time": 7
         },
         {
             "TaskValue": "Clean Living Room",
-            "time": 1
+            "time": 22
         },
         {
             "TaskValue": "Do Laundry",
-            "time": 32
+            "time": 5
         },
         {
             "TaskValue": "Clean Bathroom",
-            "time": 2
+            "time": 7
         },
         {
             "TaskValue": "Clean Living Room",
-            "time": 1
+            "time": 9
         },
         {
             "TaskValue": "Do Laundry",
-            "time": 32
+            "time": 25
         }
     ]
 }

@@ -33,15 +33,9 @@ class AvaliableDays(Predicate):
     nameOfDay:str 
 
 # #ENUM FIELD IS NOT SOMETHING YOU WANT THEY CANNOT BE QUERIED?
-class User(Predicate):
-    name:ConstantStr
-    userID:ConstantStr
-    minVal:int
-    maxVal:int 
 
-class PreferredDays(Predicate):
-    dateVal:int
-    userID:ConstantStr
+
+
     
     #avaliable:DayVals
     # ?minTime:int
@@ -52,6 +46,13 @@ class Task(Predicate):
     duration:int
     repetitionVal:int
 
+
+class User(Predicate):
+    name:ConstantStr
+    userID:ConstantStr
+    minVal:int
+    maxVal:int 
+
 class PreferredTask(Predicate):
     name:ConstantStr
     duration:int
@@ -59,7 +60,10 @@ class PreferredTask(Predicate):
     user:ConstantStr
     taskID:int
     minTime:int
-
+    
+class PreferredDays(Predicate):
+    dateVal:int
+    userID:ConstantStr
 
 class Assignment(Predicate):
     taskValue:ConstantStr
@@ -132,23 +136,6 @@ def main():
     
     results={}
     
-    # for u in users:
-    #     taskVals=[]
-    #     assignments=list(query.bind(u.name).all())
-    #     if not assignments:
-    #         print("User not assigned any tasks!".format(u.name))
-
-    #     else:
-    #         taskQuery=solution.query(Assignment,PreferredTask).join(Assignment.taskID==PreferredTask.taskID)\
-    #         .select(lambda taskVal,assignID: f"{taskVal.time, taskVal.userID, taskVal.taskValue} from {assignID.taskID}")
-    #         print("\n")
-    #         print("User {}".format(u.name))
-    #         results=taskQuery.all()
-    #         for result in results:
-    #             print(result)
-    #         FROM HERE YOU NOW NEED TO DELETE THE RESULTS OF THE DATES THAT THE USERS DO NOT PREFER 
-            
-
     for u in users: 
         currentTaskDuration=Assignment.duration
         assignments = list(query.bind(u.name ).all())

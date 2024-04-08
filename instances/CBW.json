@@ -4,7 +4,7 @@
                     "name":"Queen",
                     "userID":"mlQUmZ4ucvaItkqLuVUHwoaJDb03",
                     "hiveID":3456,
-                    "availableMin": 6,
+                    "availableMin": 16,
                     "avaliableMax": 24,
                     "prefer":["Kitchen","Personal"],
                     "dayPrefer":[3,7,4]
