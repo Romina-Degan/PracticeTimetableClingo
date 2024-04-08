@@ -60,7 +60,7 @@ class PreferredTask(Predicate):
     user:ConstantStr
     taskID:int
     minTime:int
-    
+
 class PreferredDays(Predicate):
     dateVal:int
     userID:ConstantStr
@@ -132,7 +132,7 @@ def main():
     if not solution:
         raise ValueError("No solution Found")
 
-    query = solution.query(Assignment).where(Assignment.user == ph1_).order_by(Assignment.date)
+    query = solution.query(Assignment).where(Assignment.user == ph1_).order_by(Assignment.date, Assignment.time)
     
     results={}
     

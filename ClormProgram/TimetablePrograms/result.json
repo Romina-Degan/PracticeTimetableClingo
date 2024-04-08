@@ -2,7 +2,7 @@
     "mlQUmZ4ucvaItkqLuVUHwoaJDb03": [
         {
             "TaskValue": "Clean Dishes",
-            "time": 23
+            "time": 22
         },
         {
             "TaskValue": "Do Laundry",
@@ -10,7 +10,7 @@
         },
         {
             "TaskValue": "Clean Dishes",
-            "time": 23
+            "time": 21
         },
         {
             "TaskValue": "Do Laundry",
@@ -18,61 +18,61 @@
         },
         {
             "TaskValue": "Clean Dishes",
-            "time": 24
+            "time": 21
         },
         {
             "TaskValue": "Do Laundry",
-            "time": 16
+            "time": 24
         }
     ],
     "Dc2CpwAr5UfHuPdVeaQwmCzB8rZ2": [
         {
             "TaskValue": "Clean Bathroom",
+            "time": 11
+        },
+        {
+            "TaskValue": "Do Laundry",
+            "time": 23
+        },
+        {
+            "TaskValue": "Clean Living Room",
             "time": 26
         },
         {
-            "TaskValue": "Clean Living Room",
-            "time": 9
+            "TaskValue": "Clean Bathroom",
+            "time": 11
         },
         {
             "TaskValue": "Do Laundry",
-            "time": 5
+            "time": 23
         },
         {
-            "TaskValue": "Clean Bathroom",
+            "TaskValue": "Clean Living Room",
             "time": 26
         },
         {
-            "TaskValue": "Clean Living Room",
-            "time": 7
+            "TaskValue": "Clean Bathroom",
+            "time": 11
         },
         {
             "TaskValue": "Do Laundry",
-            "time": 5
+            "time": 23
+        },
+        {
+            "TaskValue": "Clean Living Room",
+            "time": 26
         },
         {
             "TaskValue": "Clean Bathroom",
-            "time": 7
-        },
-        {
-            "TaskValue": "Clean Living Room",
-            "time": 22
+            "time": 11
         },
         {
             "TaskValue": "Do Laundry",
-            "time": 5
-        },
-        {
-            "TaskValue": "Clean Bathroom",
-            "time": 7
+            "time": 23
         },
         {
             "TaskValue": "Clean Living Room",
-            "time": 9
-        },
-        {
-            "TaskValue": "Do Laundry",
-            "time": 25
+            "time": 26
         }
     ]
 }
