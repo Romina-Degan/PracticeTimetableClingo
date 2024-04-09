@@ -13,7 +13,7 @@
                     "name":"Romina",
                     "userID":"Dc2CpwAr5UfHuPdVeaQwmCzB8rZ2",
                     "hiveID":3456,
-                    "prefer":["Bathroom","Living Room","Personal"],
+                    "prefer":["Bathroom","Living Room","Kitchen","Personal"],
                     "availableMin": 5,
                     "avaliableMax": 26,
                     "dayPrefer":[6,3,1,7]

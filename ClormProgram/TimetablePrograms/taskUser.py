@@ -95,31 +95,32 @@ def main():
     #tasks=[Task(name=taskValues['taskName'],duration=taskValues['duration'], repetitionVal=taskValues["repetition"])for taskValues in taskDetails["TaskValues"][0]["TaskDescriptions"]] 
    
     instances= FactBase(users)
-   
+    lastPref=[]
     ctrl.add_facts(instances)
     for members in users:
         currTask=[]
+        
         counter=0
         currUser=(list(filter(lambda x:(x["userID"]==members.userID),userDetails['userSpecifications'])))
         currPref=currUser[0]['prefer']
         currDay=currUser[0]['dayPrefer']
-                                                             
+
         for days in currDay:
             instances.add(FactBase(PreferredDays(dateVal=days,userID=members.userID)))
             ctrl.add_facts(instances)
-        
+        prefTask={}
         for items in currPref:
-            prefTask=[]            
-            for taskValues in  taskDetails["TaskValues"][0]["TaskDescriptions"]:
-
-                if items in taskValues['label'] and taskValues not in prefTask :    
-                    #REMEMBER FOR THIS THE CLASS FOR TAS?K THE ID IS SET TO INT SINCE JSON FILE IS INT BUT REAL IS STR
-                  
-                    currTask=[PreferredTask(name=taskValues['taskName'],duration=taskValues['duration'], repetitionVal=taskValues["repetition"],user=members.userID, taskID=taskValues['taskID'],minTime=taskValues["minTime"])]
-                    instances.add(FactBase(currTask))
-                
-                    ctrl.add_facts(instances)
-
+            if items in lastPref and items !="Personal":
+                currPref.remove(items)
+            else:
+                for taskValues in  taskDetails["TaskValues"][0]["TaskDescriptions"]:
+                    if items in taskValues['label']:    
+                        #REMEMBER FOR THIS THE CLASS FOR TAS?K THE ID IS SET TO INT SINCE JSON FILE IS INT BUT REAL IS STR                 
+                        currTask=[PreferredTask(name=taskValues['taskName'],duration=taskValues['duration'], repetitionVal=taskValues["repetition"],user=members.userID, taskID=taskValues['taskID'],minTime=taskValues["minTime"])]
+                        instances.add(FactBase(currTask))
+                        ctrl.add_facts(instances)
+        lastPref=currPref
+        print(lastPref)
     ctrl.ground([("base", [])])
     print(instances)
     solution=None
@@ -151,12 +152,12 @@ def main():
                 currentDuration=a.duration
                 
                 print("\t chore {}, at time {} at date{}".format(a.taskValue,a.time,a.date))
-                taskVals.append({"TaskValue":a.taskValue, "time": a.time})
+                taskVals.append({"TaskValue":a.taskValue, "time": a.time, "date":a.date})
 
         results[str(userID)] = taskVals
                 #taskVals=json.dumps({"name":u.name, "taskVal":a.taskValue, "taskTime":a.time}, indent=4)
     with open('C:/Users/romin/DISS/PracticeTimetableClingo/ClormProgram/TimetablePrograms/result.json','w') as fp:
-        json.dump(results, fp, indent=4)    
+        json.dump(results, fp, indent=1)    
 
 if __name__=="__main__":
     main()
