@@ -110,15 +110,16 @@ def main():
             ctrl.add_facts(instances)
         prefTask={}
         for items in currPref:
-            if items in lastPref and items !="Personal":
+            if items in lastPref and items!="Personal": 
                 currPref.remove(items)
-            else:
-                for taskValues in  taskDetails["TaskValues"][0]["TaskDescriptions"]:
-                    if items in taskValues['label']:    
-                        #REMEMBER FOR THIS THE CLASS FOR TAS?K THE ID IS SET TO INT SINCE JSON FILE IS INT BUT REAL IS STR                 
-                        currTask=[PreferredTask(name=taskValues['taskName'],duration=taskValues['duration'], repetitionVal=taskValues["repetition"],user=members.userID, taskID=taskValues['taskID'],minTime=taskValues["minTime"])]
-                        instances.add(FactBase(currTask))
-                        ctrl.add_facts(instances)
+        for items in currPref:
+            for taskValues in  taskDetails["TaskValues"][0]["TaskDescriptions"]:        
+                if items in taskValues['label'] or taskValues['label']=="Personal":  
+                    print(taskValues['label'])  
+                    #REMEMBER FOR THIS THE CLASS FOR TAS?K THE ID IS SET TO INT SINCE JSON FILE IS INT BUT REAL IS STR                 
+                    currTask=[PreferredTask(name=taskValues['taskName'],duration=taskValues['duration'], repetitionVal=taskValues["repetition"],user=members.userID, taskID=taskValues['taskID'],minTime=taskValues["minTime"])]
+                    instances.add(FactBase(currTask))
+                    ctrl.add_facts(instances)
         lastPref=currPref
         print(lastPref)
     ctrl.ground([("base", [])])
