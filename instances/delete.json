@@ -2,26 +2,26 @@
     "userSpecifications":[
         {
             "name":"Alex",
-            "userID":1234,
-            "hiveID":3456,
+            "userID":"TGURrPf6ZldaDeVcr5INZIuO7F43",
+            "hiveID":"6mMxD",
             "availableMin": 1,
             "avaliableMax": 15,
-            "prefer":["Kitchen","Living Room","Personal"],
+            "prefer":["Bathroom","Kitchen","Personal"],
             "dayPrefer":[1,2,4]
             
         },{
             "name":"Amanda",
-            "userID":9101112,
-            "hiveID":3456,
-            "prefer":["Bathroom","Personal"],
+            "userID":"qb8Ef2TsyHPbE14RTVkKdOQConu1",
+            "hiveID":"6mMxD",
+            "prefer":["Living Room","Personal"],
             "availableMin": 12,
             "avaliableMax": 32,
             "dayPrefer":[5,4,7]
         },{
             "name":"Brian",
-            "userID":5678,
-            "hiveID":3456,
-            "prefer":["All"],
+            "userID":"Xx1OU9QMn8PNHYhrTKKusl9k9ks2",
+            "hiveID":"6mMxD",
+            "prefer":["All","Personal"],
             "availableMin": 15,
             "avaliableMax": 28,
             "dayPrefer":[1,2,3,4,5,6,7]

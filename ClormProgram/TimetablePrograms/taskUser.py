@@ -3,7 +3,7 @@ import json
 with open(r"C:\Users\romin\DISS\PracticeTimetableClingo\instances\Task.json") as taskFile:
     taskDetails=json.load(taskFile)
 
-with open(r"C:\Users\romin\DISS\PracticeTimetableClingo\instances\CBW.json") as userFile:
+with open(r"C:\Users\romin\DISS\PracticeTimetableClingo\instances\delete.json") as userFile:
     userDetails=json.load(userFile)
 
 
@@ -111,16 +111,18 @@ def main():
         prefTask={}
         for items in currPref:
             if items in lastPref and items!="Personal": 
+                print(currPref)
                 currPref.remove(items)
+                print(items)
+                print(currPref)
         for items in currPref:
             for taskValues in  taskDetails["TaskValues"][0]["TaskDescriptions"]:        
                 if items in taskValues['label'] or taskValues['label']=="Personal":  
-                    print(taskValues['label'])  
                     #REMEMBER FOR THIS THE CLASS FOR TAS?K THE ID IS SET TO INT SINCE JSON FILE IS INT BUT REAL IS STR                 
                     currTask=[PreferredTask(name=taskValues['taskName'],duration=taskValues['duration'], repetitionVal=taskValues["repetition"],user=members.userID, taskID=taskValues['taskID'],minTime=taskValues["minTime"])]
                     instances.add(FactBase(currTask))
                     ctrl.add_facts(instances)
-        lastPref=currPref
+            lastPref.append(items)
         print(lastPref)
     ctrl.ground([("base", [])])
     print(instances)
