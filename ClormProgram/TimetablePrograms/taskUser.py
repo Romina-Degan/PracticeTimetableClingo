@@ -3,7 +3,7 @@ import json
 with open(r"C:\Users\romin\DISS\PracticeTimetableClingo\instances\Task.json") as taskFile:
     taskDetails=json.load(taskFile)
 
-with open(r"C:\Users\romin\DISS\PracticeTimetableClingo\instances\delete.json") as userFile:
+with open(r"C:\Users\romin\DISS\PracticeTimetableClingo\instances\CBW.json") as userFile:
     userDetails=json.load(userFile)
 
 
@@ -56,10 +56,9 @@ class User(Predicate):
 class PreferredTask(Predicate):
     name:ConstantStr
     duration:int
-    repetitionVal: int
     user:ConstantStr
     taskID:int
-    minTime:int
+
 
 class PreferredDays(Predicate):
     dateVal:int
@@ -72,7 +71,6 @@ class Assignment(Predicate):
     userID:ConstantStr
     duration:int
     time:int
-    repeitionValue:int
     date:int
 
 
@@ -99,8 +97,6 @@ def main():
     ctrl.add_facts(instances)
     for members in users:
         currTask=[]
-        
-        counter=0
         currUser=(list(filter(lambda x:(x["userID"]==members.userID),userDetails['userSpecifications'])))
         currPref=currUser[0]['prefer']
         currDay=currUser[0]['dayPrefer']
@@ -111,15 +107,15 @@ def main():
         prefTask={}
         for items in currPref:
             if items in lastPref and items!="Personal": 
-                print(currPref)
                 currPref.remove(items)
-                print(items)
-                print(currPref)
+
         for items in currPref:
             for taskValues in  taskDetails["TaskValues"][0]["TaskDescriptions"]:        
-                if items in taskValues['label'] or taskValues['label']=="Personal":  
-                    #REMEMBER FOR THIS THE CLASS FOR TAS?K THE ID IS SET TO INT SINCE JSON FILE IS INT BUT REAL IS STR                 
-                    currTask=[PreferredTask(name=taskValues['taskName'],duration=taskValues['duration'], repetitionVal=taskValues["repetition"],user=members.userID, taskID=taskValues['taskID'],minTime=taskValues["minTime"])]
+                if items in taskValues['label'] or taskValues['label']=="Personal":              
+                    currTask=[PreferredTask(name=taskValues['taskName'],duration=taskValues['duration'] ,
+                                            user=members.userID, taskID=taskValues['taskID'])]
+                    print(currTask)
+                    print("\n")
                     instances.add(FactBase(currTask))
                     ctrl.add_facts(instances)
             lastPref.append(items)

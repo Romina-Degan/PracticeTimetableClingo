@@ -1,15 +1,15 @@
 time(T):-T=1..32.
 date(DA):-DA=1..7.
 
-1{assignment(C,TID,U,ID,D,T,R,DA) :user(U,ID,MI,MX),time(T),date(DA), T>=MI, T<=MX}1 :- 
-        preferredTask(C,D,R,PID,TID,MT), PID=ID,
+1{assignment(C,TID,U,ID,D,T,DA) :user(U,ID,MI,MX),time(T),date(DA),T>=MI, T<=MX}1 :- 
+        preferredTask(C,D,PID,TID), PID=ID,
         preferredDays(DY,DID),
         DY= DA, ID=DID.
 
-:- assignment(C,_,U1,_,_,T,_,DA) ,  assignment(C,_,U2,_,_,T,_,DA), U1!=U2 .
-:- assignment(C,_,_,ID1,D,T1,_,_), assignment(C,_,_,ID2,D,T2,_,_),preferredTask(C,D,_,_,_,_), ID1!=ID2, abs(T1-T2)+1<= D.
-:- assignment(C,_,_,ID1,D,T1,_,_),assignment(C,_,_,ID2,D,T2,_,_),  (T1+D)+1<=T2. 
-
+:- assignment(C,_,U1,_,D,T,DA) ,  assignment(C,_,U2,_,D,T,DA), U1!=U2 .
+:- assignment(C1,_,U,_,D1,T,DA), assignment(C2,_,U,_,D2,T,DA), C1 != C2.
+:- assignment(C1,_,_,ID,D,T1,DA),assignment(C2,_,_,ID,_,T2,_DA), preferredTask(C1,D,_,_,_), T1!=T2, (T1-D)<T2.
+:- assignment(C,_,_,ID1,D,T1,_,_), assignment(C,_,_,ID2,D,T2,_,_),preferredTask(C,D,_,_,_,_), ID1!=ID2, abs(T1-T2)< D.
 % :-assignment(_,TID,_,_,_,_,_,_), preferredTask(_,_,R,_,TID,_), #count{CID :assignment(_,TID,_,_,_,_,_,_), CID=TID}>R.
 
 

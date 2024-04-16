@@ -1,167 +1,115 @@
 {
- "TGURrPf6ZldaDeVcr5INZIuO7F43": [
-  {
-   "TaskValue": "Clean Bathroom",
-   "time": 8,
-   "date": 1
-  },
-  {
-   "TaskValue": "Clean Dishes",
-   "time": 11,
-   "date": 1
-  },
+ "mlQUmZ4ucvaItkqLuVUHwoaJDb03": [
   {
    "TaskValue": "Do Laundry",
-   "time": 14,
-   "date": 1
-  },
-  {
-   "TaskValue": "Clean Bathroom",
-   "time": 8,
-   "date": 2
-  },
-  {
-   "TaskValue": "Clean Dishes",
-   "time": 11,
-   "date": 2
-  },
-  {
-   "TaskValue": "Do Laundry",
-   "time": 14,
-   "date": 2
-  },
-  {
-   "TaskValue": "Clean Bathroom",
-   "time": 8,
-   "date": 4
-  },
-  {
-   "TaskValue": "Clean Dishes",
-   "time": 11,
-   "date": 4
-  },
-  {
-   "TaskValue": "Do Laundry",
-   "time": 14,
-   "date": 4
-  }
- ],
- "qb8Ef2TsyHPbE14RTVkKdOQConu1": [
-  {
-   "TaskValue": "Do Laundry",
-   "time": 16,
-   "date": 4
-  },
-  {
-   "TaskValue": "Clean Living Room",
-   "time": 17,
-   "date": 4
-  },
-  {
-   "TaskValue": "Take Trash Out",
-   "time": 31,
-   "date": 4
-  },
-  {
-   "TaskValue": "Do Laundry",
-   "time": 16,
-   "date": 5
-  },
-  {
-   "TaskValue": "Clean Living Room",
-   "time": 17,
-   "date": 5
-  },
-  {
-   "TaskValue": "Take Trash Out",
-   "time": 31,
-   "date": 5
-  },
-  {
-   "TaskValue": "Do Laundry",
-   "time": 16,
-   "date": 7
-  },
-  {
-   "TaskValue": "Clean Living Room",
-   "time": 17,
-   "date": 7
-  },
-  {
-   "TaskValue": "Take Trash Out",
-   "time": 31,
-   "date": 7
-  }
- ],
- "Xx1OU9QMn8PNHYhrTKKusl9k9ks2": [
-  {
-   "TaskValue": "Do Laundry",
-   "time": 15,
-   "date": 1
-  },
-  {
-   "TaskValue": "Hoover Place",
-   "time": 23,
-   "date": 1
-  },
-  {
-   "TaskValue": "Do Laundry",
-   "time": 15,
-   "date": 2
-  },
-  {
-   "TaskValue": "Hoover Place",
-   "time": 23,
-   "date": 2
-  },
-  {
-   "TaskValue": "Do Laundry",
-   "time": 15,
+   "time": 21,
    "date": 3
   },
   {
-   "TaskValue": "Hoover Place",
-   "time": 23,
+   "TaskValue": "Clean Dishes",
+   "time": 24,
    "date": 3
   },
   {
    "TaskValue": "Do Laundry",
-   "time": 15,
+   "time": 18,
    "date": 4
   },
   {
-   "TaskValue": "Hoover Place",
-   "time": 23,
+   "TaskValue": "Clean Dishes",
+   "time": 20,
    "date": 4
   },
   {
-   "TaskValue": "Do Laundry",
-   "time": 15,
-   "date": 5
-  },
-  {
-   "TaskValue": "Hoover Place",
-   "time": 23,
-   "date": 5
-  },
-  {
-   "TaskValue": "Do Laundry",
-   "time": 15,
-   "date": 6
-  },
-  {
-   "TaskValue": "Hoover Place",
-   "time": 23,
-   "date": 6
-  },
-  {
-   "TaskValue": "Do Laundry",
-   "time": 15,
+   "TaskValue": "Clean Dishes",
+   "time": 20,
    "date": 7
   },
   {
-   "TaskValue": "Hoover Place",
-   "time": 23,
+   "TaskValue": "Do Laundry",
+   "time": 24,
+   "date": 7
+  }
+ ],
+ "Dc2CpwAr5UfHuPdVeaQwmCzB8rZ2": [
+  {
+   "TaskValue": "Clean Living Room",
+   "time": 8,
+   "date": 1
+  },
+  {
+   "TaskValue": "Clean Bathroom",
+   "time": 18,
+   "date": 1
+  },
+  {
+   "TaskValue": "Do Laundry",
+   "time": 20,
+   "date": 1
+  },
+  {
+   "TaskValue": "Take Trash Out",
+   "time": 25,
+   "date": 1
+  },
+  {
+   "TaskValue": "Do Laundry",
+   "time": 7,
+   "date": 3
+  },
+  {
+   "TaskValue": "Take Trash Out",
+   "time": 8,
+   "date": 3
+  },
+  {
+   "TaskValue": "Clean Living Room",
+   "time": 19,
+   "date": 3
+  },
+  {
+   "TaskValue": "Clean Bathroom",
+   "time": 31,
+   "date": 3
+  },
+  {
+   "TaskValue": "Do Laundry",
+   "time": 10,
+   "date": 6
+  },
+  {
+   "TaskValue": "Clean Bathroom",
+   "time": 12,
+   "date": 6
+  },
+  {
+   "TaskValue": "Take Trash Out",
+   "time": 28,
+   "date": 6
+  },
+  {
+   "TaskValue": "Clean Living Room",
+   "time": 30,
+   "date": 6
+  },
+  {
+   "TaskValue": "Clean Living Room",
+   "time": 5,
+   "date": 7
+  },
+  {
+   "TaskValue": "Take Trash Out",
+   "time": 9,
+   "date": 7
+  },
+  {
+   "TaskValue": "Do Laundry",
+   "time": 29,
+   "date": 7
+  },
+  {
+   "TaskValue": "Clean Bathroom",
+   "time": 31,
    "date": 7
   }
  ]

@@ -1,22 +1,14 @@
 {
             "userSpecifications":[
                 {
-                    "name":"Queen",
-                    "userID":"mlQUmZ4ucvaItkqLuVUHwoaJDb03",
-                    "hiveID":3456,
-                    "availableMin": 16,
-                    "avaliableMax": 24,
-                    "prefer":["Kitchen","Personal"],
-                    "dayPrefer":[3,7,4]
+                    "name":"Queen", "userID":"mlQUmZ4ucvaItkqLuVUHwoaJDb03", "hiveID":3456,
+                    "availableMin": 16, "avaliableMax": 24,
+                    "prefer":["Kitchen","Personal"], "dayPrefer":[3,7,4]
                     
                 },{
-                    "name":"Romina",
-                    "userID":"Dc2CpwAr5UfHuPdVeaQwmCzB8rZ2",
-                    "hiveID":3456,
-                    "prefer":["Bathroom","Living Room","Kitchen","Personal"],
-                    "availableMin": 5,
-                    "avaliableMax": 26,
-                    "dayPrefer":[6,3,1,7]
+                    "name":"Romina", "userID":"Dc2CpwAr5UfHuPdVeaQwmCzB8rZ2", "hiveID":3456,
+                    "availableMin": 5, "avaliableMax": 31, 
+                    "prefer":["Bathroom","Living Room","Kitchen","Personal"], "dayPrefer":[6,3,1,7]
                 }
             ]
 }

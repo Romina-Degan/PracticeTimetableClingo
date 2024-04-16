@@ -1,12 +1,12 @@
 {
     "TaskValues":[
         {"TaskDescriptions":[
-                {"taskID":1, "taskName":"Hoover Place", "duration":5,  "minTime":13, "repetition":1, "label":["All"]},
-                {"taskID":2, "taskName":"Do Laundry","duration":2, "minTime":1,"repetition":1, "label":["Personal"]},
-                {"taskID":3, "taskName":"Clean Dishes" ,"duration":2,"minTime":30, "repetition":7, "label":["Kitchen"]},
-                {"taskID":4, "taskName":"Take Trash Out","duration":1, "minTime":1,"repetition":2, "label":["Living Room"]},
-                {"taskID":6, "taskName":"Clean Bathroom","duration":3, "minTime":12,"repetition":4, "label":["Bathroom"]},
-                {"taskID":7, "taskName":"Clean Living Room","duration":5, "minTime":1,"repetition":2, "label":["Living Room"]}
+                {"taskID":1, "taskName":"Hoover Place", "duration":5,   "label":["All"]},
+                {"taskID":2, "taskName":"Do Laundry","duration":2, "label":["Personal"]},
+                {"taskID":3, "taskName":"Clean Dishes" ,"duration":2,"label":["Kitchen"]},
+                {"taskID":4, "taskName":"Take Trash Out","duration":1,  "label":["Living Room"]},
+                {"taskID":6, "taskName":"Clean Bathroom","duration":5, "label":["Bathroom"]},
+                {"taskID":7, "taskName":"Clean Living Room","duration":3,  "label":["Living Room"]}
 
                 
             ]
