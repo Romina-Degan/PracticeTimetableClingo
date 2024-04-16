@@ -2,7 +2,7 @@
  "mlQUmZ4ucvaItkqLuVUHwoaJDb03": [
   {
    "TaskValue": "Do Laundry",
-   "time": 21,
+   "time": 16,
    "date": 3
   },
   {
@@ -12,21 +12,21 @@
   },
   {
    "TaskValue": "Do Laundry",
-   "time": 18,
+   "time": 16,
    "date": 4
   },
   {
    "TaskValue": "Clean Dishes",
-   "time": 20,
+   "time": 24,
    "date": 4
-  },
-  {
-   "TaskValue": "Clean Dishes",
-   "time": 20,
-   "date": 7
   },
   {
    "TaskValue": "Do Laundry",
+   "time": 16,
+   "date": 7
+  },
+  {
+   "TaskValue": "Clean Dishes",
    "time": 24,
    "date": 7
   }
@@ -34,37 +34,37 @@
  "Dc2CpwAr5UfHuPdVeaQwmCzB8rZ2": [
   {
    "TaskValue": "Clean Living Room",
+   "time": 5,
+   "date": 1
+  },
+  {
+   "TaskValue": "Do Laundry",
    "time": 8,
+   "date": 1
+  },
+  {
+   "TaskValue": "Take Trash Out",
+   "time": 28,
    "date": 1
   },
   {
    "TaskValue": "Clean Bathroom",
-   "time": 18,
+   "time": 31,
    "date": 1
   },
   {
-   "TaskValue": "Do Laundry",
-   "time": 20,
-   "date": 1
-  },
-  {
-   "TaskValue": "Take Trash Out",
-   "time": 25,
-   "date": 1
-  },
-  {
-   "TaskValue": "Do Laundry",
-   "time": 7,
+   "TaskValue": "Clean Living Room",
+   "time": 5,
    "date": 3
   },
   {
-   "TaskValue": "Take Trash Out",
+   "TaskValue": "Do Laundry",
    "time": 8,
    "date": 3
   },
   {
-   "TaskValue": "Clean Living Room",
-   "time": 19,
+   "TaskValue": "Take Trash Out",
+   "time": 24,
    "date": 3
   },
   {
@@ -73,23 +73,23 @@
    "date": 3
   },
   {
-   "TaskValue": "Do Laundry",
-   "time": 10,
+   "TaskValue": "Clean Living Room",
+   "time": 5,
    "date": 6
   },
   {
-   "TaskValue": "Clean Bathroom",
-   "time": 12,
+   "TaskValue": "Do Laundry",
+   "time": 8,
    "date": 6
   },
   {
    "TaskValue": "Take Trash Out",
-   "time": 28,
+   "time": 22,
    "date": 6
   },
   {
-   "TaskValue": "Clean Living Room",
-   "time": 30,
+   "TaskValue": "Clean Bathroom",
+   "time": 31,
    "date": 6
   },
   {
@@ -98,13 +98,13 @@
    "date": 7
   },
   {
-   "TaskValue": "Take Trash Out",
-   "time": 9,
+   "TaskValue": "Do Laundry",
+   "time": 8,
    "date": 7
   },
   {
-   "TaskValue": "Do Laundry",
-   "time": 29,
+   "TaskValue": "Take Trash Out",
+   "time": 10,
    "date": 7
   },
   {
