@@ -1,9 +1,16 @@
 import json
+import os
 
-with open(r"C:\Users\romin\DISS\PracticeTimetableClingo\instances\Task.json") as taskFile:
+
+currentDir=os.path.dirname(os.path.realpath(__file__))
+filePathTaskVals=os.path.join(currentDir,"instances","Task.json")
+#To change the current file that is being tested, please change the second parameter listed Household_
+filePathTestVals=os.path.join(currentDir,"instances","Household4.json")
+
+with open(filePathTaskVals) as taskFile:
     taskDetails=json.load(taskFile)
 
-with open(r"C:\Users\romin\DISS\PracticeTimetableClingo\instances\CBW.json") as userFile:
+with open(filePathTestVals) as userFile:
     userDetails=json.load(userFile)
 
 
@@ -15,7 +22,7 @@ import clingo
 from datetime import datetime, timedelta
 from clorm import ConstantStr,define_enum_field,FactBase,IntegerField,StringField,ContextBuilder, Predicate,ConstantField,field,refine_field, ph1_, ph2_
 cb=ContextBuilder
-ASP_PROGRAM =r"C:\Users\romin\DISS\PracticeTimetableClingo\ClormProgram\TimetablePrograms\taskUser.lp"
+ASP_PROGRAM =r"taskUser.lp"
 
 class DateField(StringField):
     pytocl=lambda dt:dt.strftime("%d/%m/%Y")
@@ -44,7 +51,7 @@ class AvaliableDays(Predicate):
 class Task(Predicate):
     name:ConstantStr
     duration:int
-    repetitionVal:int
+    
 
 
 class User(Predicate):
@@ -78,7 +85,7 @@ def main():
     prefTask=[]
     
     ctrl=clingo.Control(unifier=[User,Assignment,PreferredTask,PreferredDays])
-    clingoCtrl=clingo.Control()
+    
     ctrl.load(ASP_PROGRAM)
 
     #So it does actually add to the factbase but it isnt in a way that is understandable for the parser
@@ -119,14 +126,14 @@ def main():
                     instances.add(FactBase(currTask))
                     ctrl.add_facts(instances)
             lastPref.append(items)
-        print(lastPref)
+    
     ctrl.ground([("base", [])])
     print(instances)
     solution=None
     
     def on_model(model):
         nonlocal solution
-        solution=model.facts(unifier=[User,Task,Assignment,PreferredTask,PreferredDays], atoms=True,raise_on_empty=True)
+        solution=model.facts(unifier=[User,Assignment,PreferredTask,PreferredDays], atoms=True,raise_on_empty=True)
     
     ctrl.solve(on_model=on_model)
     if not solution:
@@ -154,8 +161,7 @@ def main():
                 taskVals.append({"TaskValue":a.taskValue, "time": a.time, "date":a.date})
 
         results[str(userID)] = taskVals
-                #taskVals=json.dumps({"name":u.name, "taskVal":a.taskValue, "taskTime":a.time}, indent=4)
-    with open('C:/Users/romin/DISS/PracticeTimetableClingo/ClormProgram/TimetablePrograms/result.json','w') as fp:
+    with open('result.json','w') as fp:
         json.dump(results, fp, indent=1)    
 
 if __name__=="__main__":

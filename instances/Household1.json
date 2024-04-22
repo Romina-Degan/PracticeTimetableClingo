@@ -1,0 +1,9 @@
+{
+    "userSpecifications":[
+        {
+            "name":"Romina", "userID":"Dc2CpwAr5UfHuPdVeaQwmCzB8rZ2", "hiveID":3456,
+            "availableMin": 1, "avaliableMax": 29, 
+            "prefer":["Bathroom","Living Room","Kitchen","Personal","All"], "dayPrefer":[1,2,3,6]
+        }
+    ]
+}

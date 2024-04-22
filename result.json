@@ -1,12 +1,130 @@
 {
-    "1234": [
-        "Hoover Place",
-        "Do Laundry"
-    ],
-    "12345": [
-        "Clean Dishes"
-    ],
-    "45678": [
-        "Take Trash Out"
-    ]
+ "ufcFhHrbCIOFVxoFh00Y3tbsERD3": [
+  {
+   "TaskValue": "Clean Dishes",
+   "time": 18,
+   "date": 1
+  },
+  {
+   "TaskValue": "Do Laundry",
+   "time": 29,
+   "date": 1
+  },
+  {
+   "TaskValue": "Do Laundry",
+   "time": 18,
+   "date": 2
+  },
+  {
+   "TaskValue": "Clean Dishes",
+   "time": 29,
+   "date": 2
+  },
+  {
+   "TaskValue": "Clean Dishes",
+   "time": 18,
+   "date": 6
+  },
+  {
+   "TaskValue": "Do Laundry",
+   "time": 29,
+   "date": 6
+  },
+  {
+   "TaskValue": "Do Laundry",
+   "time": 18,
+   "date": 7
+  },
+  {
+   "TaskValue": "Clean Dishes",
+   "time": 29,
+   "date": 7
+  }
+ ],
+ "9IlCacmTyMVkKAkKcGAcG66zbpz2": [
+  {
+   "TaskValue": "Do Laundry",
+   "time": 18,
+   "date": 3
+  },
+  {
+   "TaskValue": "Take Trash Out",
+   "time": 28,
+   "date": 3
+  },
+  {
+   "TaskValue": "Clean Living Room",
+   "time": 29,
+   "date": 3
+  },
+  {
+   "TaskValue": "Do Laundry",
+   "time": 18,
+   "date": 5
+  },
+  {
+   "TaskValue": "Take Trash Out",
+   "time": 28,
+   "date": 5
+  },
+  {
+   "TaskValue": "Clean Living Room",
+   "time": 29,
+   "date": 5
+  }
+ ],
+ "FQ95qOSZHZadtctOfyyCbmv00Cz2": [
+  {
+   "TaskValue": "Do Laundry",
+   "time": 2,
+   "date": 3
+  },
+  {
+   "TaskValue": "Clean Bathroom",
+   "time": 26,
+   "date": 3
+  },
+  {
+   "TaskValue": "Do Laundry",
+   "time": 2,
+   "date": 4
+  },
+  {
+   "TaskValue": "Clean Bathroom",
+   "time": 26,
+   "date": 4
+  },
+  {
+   "TaskValue": "Do Laundry",
+   "time": 2,
+   "date": 5
+  },
+  {
+   "TaskValue": "Clean Bathroom",
+   "time": 26,
+   "date": 5
+  }
+ ],
+ "5i9CRkdfkNZNFlDfbHyYdMZUA7t1": [
+  {
+   "TaskValue": "Do Laundry",
+   "time": 7,
+   "date": 1
+  },
+  {
+   "TaskValue": "Hoover Place",
+   "time": 25,
+   "date": 1
+  },
+  {
+   "TaskValue": "Do Laundry",
+   "time": 7,
+   "date": 6
+  },
+  {
+   "TaskValue": "Hoover Place",
+   "time": 25,
+   "date": 6
+  }
+ ]
 }

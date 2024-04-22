@@ -1,0 +1,15 @@
+{
+    "userSpecifications":[
+        {
+            "name":"Antoine", "userID":"ImOe9GAE2ZSk2R6Zy3ncvYpvjZg1", "hiveID":"1mjw0W55R8vmWqZM9ni1",
+            "availableMin": 13, "avaliableMax": 27, 
+            "prefer":["Kitchen","Personal"], "dayPrefer":[2,4]
+
+        }, {
+            "name":"Kirk", "userID":"IB1Q96nNQuzarARovvvNAoRUq90e2", "hiveID":"1mjw0W55R8vmWqZM9ni1",
+            "availableMin": 19, "avaliableMax": 30, 
+            "prefer":["Kitchen","Living Room","Personal"], "dayPrefer":[3,4,6]
+            
+        }
+    ]
+}

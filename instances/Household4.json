@@ -1,0 +1,28 @@
+{
+    "userSpecifications":[
+        {
+            "name":"Louis", "userID":"ufcFhHrbCIOFVxoFh00Y3tbsERD3", 
+            "hiveID":"xTDtG8C3tjLsjDuD7vSl",
+            "availableMin": 18, "avaliableMax": 29, 
+            "prefer":["Kitchen","Personal"], "dayPrefer":[1,2,6,7]
+
+        }, {
+            "name":"Ramiro", "userID":"9IlCacmTyMVkKAkKcGAcG66zbpz2", 
+            "hiveID":"xTDtG8C3tjLsjDuD7vSl",
+            "availableMin": 18, "avaliableMax": 29, 
+            "prefer":["Kitchen","Living Room","Personal"], "dayPrefer":[3,5]
+            
+        },{
+            "name":"Darrin", "userID":"FQ95qOSZHZadtctOfyyCbmv00Cz2", 
+            "hiveID":"xTDtG8C3tjLsjDuD7vSl",
+            "availableMin": 2, "avaliableMax": 26, 
+            "prefer":["Kitchen","Bathroom","Personal"], "dayPrefer":[3,4,5]
+            
+        },{
+            "name":"Clementine", "userID":"5i9CRkdfkNZNFlDfbHyYdMZUA7t1", 
+            "hiveID":"xTDtG8C3tjLsjDuD7vSl",
+            "availableMin": 7, "avaliableMax": 25, 
+            "prefer":["Living Room","All","Personal"], "dayPrefer":[1,6]   
+        }
+    ]
+}

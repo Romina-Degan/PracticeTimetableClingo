@@ -6,10 +6,10 @@ date(DA):-DA=1..7.
         preferredDays(DY,DID),
         DY= DA, ID=DID.
 
-:- assignment(C,_,U1,_,D,T,DA) ,  assignment(C,_,U2,_,D,T,DA), U1!=U2 .
-:- assignment(C1,_,U,_,D1,T,DA), assignment(C2,_,U,_,D2,T,DA), C1 != C2.
-:- assignment(C,_,_,ID1,D,T1,_,_), assignment(C,_,_,ID2,D,T2,_,_),preferredTask(C,D,_,_,_,_), ID1!=ID2, abs(T1-T2)< D.
-:- assignment(C1,_,_,ID,D1,T1,DA), assignment(C2,_,_,ID,D2,T2,DA), T1 < T2, T1 + D1 > T2.
+:- assignment(C,_,_,ID1,D,T,DA) ,  assignment(C,_,_,ID2,D,T,DA), ID1!=ID2 .
+:- assignment(C1,_,_,ID,D1,T,DA), assignment(C2,_,_,ID,D2,T,DA), C1!=C2.
+:- assignment(C,_,_,ID1,D,T1,_), assignment(C,_,_,ID2,D,T2,_),preferredTask(C,D,_,_), ID1!=ID2, abs(T1-T2)< D.
+:- assignment(C1,_,_,ID,D1,T1,DA), assignment(C2,_,_,ID,D2,T2,DA), T1<T2, T1+D1> T2.
 
 % :-assignment(_,TID,_,_,_,_,_,_), preferredTask(_,_,R,_,TID,_), #count{CID :assignment(_,TID,_,_,_,_,_,_), CID=TID}>R.
 
