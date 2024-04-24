@@ -39,19 +39,9 @@ def dateRange(start,end):
 class AvaliableDays(Predicate):
     nameOfDay:str 
 
-# #ENUM FIELD IS NOT SOMETHING YOU WANT THEY CANNOT BE QUERIED?
-
-
-
-    
-    #avaliable:DayVals
-    # ?minTime:int
-    # maxTime:int
-    
 class Task(Predicate):
     name:ConstantStr
     duration:int
-    
 
 
 class User(Predicate):
@@ -88,8 +78,7 @@ def main():
     
     ctrl.load(ASP_PROGRAM)
 
-    #So it does actually add to the factbase but it isnt in a way that is understandable for the parser
-    #Users work when there is only one value within it?
+    #Users from JSON file extracted
     users = [User(name=userValues['name'], 
                   userID=userValues['userID'], 
                   minVal=userValues['availableMin'],
@@ -97,18 +86,20 @@ def main():
                   for userValues in userDetails['userSpecifications']]
     
     
-    #tasks=[Task(name=taskValues['taskName'],duration=taskValues['duration'], repetitionVal=taskValues["repetition"])for taskValues in taskDetails["TaskValues"][0]["TaskDescriptions"]] 
-   
+    
+    #Users loaded into the factbase
     instances= FactBase(users)
     lastPref=[]
     ctrl.add_facts(instances)
     for members in users:
         currTask=[]
+        #extract all details about a specific user
         currUser=(list(filter(lambda x:(x["userID"]==members.userID),userDetails['userSpecifications'])))
         currPref=currUser[0]['prefer']
         currDay=currUser[0]['dayPrefer']
 
         for days in currDay:
+            #Add a singular prefer value from the user details to the factbase
             instances.add(FactBase(PreferredDays(dateVal=days,userID=members.userID)))
             ctrl.add_facts(instances)
         prefTask={}
@@ -116,13 +107,13 @@ def main():
             if items in lastPref and items!="Personal": 
                 currPref.remove(items)
 
+        #Loop through each preferred item
         for items in currPref:
             for taskValues in  taskDetails["TaskValues"][0]["TaskDescriptions"]:        
                 if items in taskValues['label'] or taskValues['label']=="Personal":              
                     currTask=[PreferredTask(name=taskValues['taskName'],duration=taskValues['duration'] ,
                                             user=members.userID, taskID=taskValues['taskID'])]
-                    print(currTask)
-                    print("\n")
+                    #Add the individual task to the factbase 
                     instances.add(FactBase(currTask))
                     ctrl.add_facts(instances)
             lastPref.append(items)
@@ -138,13 +129,12 @@ def main():
     ctrl.solve(on_model=on_model)
     if not solution:
         raise ValueError("No solution Found")
-
+    #Query the resultant answer sets
     query = solution.query(Assignment).where(Assignment.user == ph1_).order_by(Assignment.date, Assignment.time)
     
     results={}
     
     for u in users: 
-        currentTaskDuration=Assignment.duration
         assignments = list(query.bind(u.name ).all())
         userID=u.userID
         taskVals=[]

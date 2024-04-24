@@ -21,7 +21,7 @@
         },{
             "name":"Clementine", "userID":"5i9CRkdfkNZNFlDfbHyYdMZUA7t1", 
             "hiveID":"xTDtG8C3tjLsjDuD7vSl",
-            "availableMin": 7, "avaliableMax": 25, 
+            "availableMin": 2, "avaliableMax": 26, 
             "prefer":["Living Room","All","Personal"], "dayPrefer":[1,6]   
         }
     ]
